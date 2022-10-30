@@ -1,0 +1,2 @@
+import Funksjoner
+import klasser

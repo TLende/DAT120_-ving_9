@@ -8,7 +8,7 @@ def ny_avtale():
     temp_starttidspunkt = ""
     while temp_starttidspunkt == "":
         try:
-            temp_starttidspunkt = datetime(int(input("ÅÅÅÅ:")),int(input("MM:")),int(input("DD:")),int(input("TT:")),int(input("MM:"))) 
+            temp_starttidspunkt = datetime(int(input("År:")),int(input("Måned:")),int(input("Dag:")),int(input("Time:")),int(input("Minutt:"))) 
         except ValueError:
             print("Ugyldig verdi! Prøv på nytt")
 
