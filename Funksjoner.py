@@ -31,10 +31,12 @@ def utskrift_avtaler(list):
 def lage_fil_avtaler(list):
     doc = open ("avtaler.txt", "w", encoding="UTF-8")
     for i in range(len(list)):
-        temp_str = str(list[i].Tittel) +";" + str(list[i].Sted)+";" + str(list[i].Starttidspunkt)+ ";" + str(list[i].Varighet) + "\n"
+        temp_str = F"{list[i].Tittel};{list[i].Sted};{list[i].Starttidspunkt};{list[i].Varighet} \n"
         doc.write(temp_str)
     doc.close()
 
+
+#test
 if __name__ == "__main__":
     list = list()
 
