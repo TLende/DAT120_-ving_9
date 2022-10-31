@@ -1,4 +1,7 @@
 import klasser
+import Funksjoner
+
+import csv
 from datetime import datetime
 
 
@@ -20,3 +23,24 @@ def ny_avtale():
             print("Ugyldig verdi, prøv på nytt")
 
     return klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet)
+
+def utskrift_avtaler(list):
+    for i in range(len(list)):
+        print(i, list[i].Tittel, list[i])
+
+def lage_fil_avtaler(list):
+    doc = open ("avtaler.txt", "w", encoding="UTF-8")
+    for i in range(len(list)):
+        temp_str = str(list[i].Tittel) +";" + str(list[i].Sted)+";" + str(list[i].Starttidspunkt)+ ";" + str(list[i].Varighet) + "\n"
+        doc.write(temp_str)
+    doc.close()
+
+if __name__ == "__main__":
+    list = list()
+
+    for i in range(2):
+        temp = Funksjoner.ny_avtale()
+        list.append(temp)
+
+    Funksjoner.utskrift_avtaler(list)
+    Funksjoner.lage_fil_avtaler(list)
