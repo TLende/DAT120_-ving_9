@@ -1,4 +1,5 @@
 from datetime import datetime
+import Funksjoner
 
 class avtale:
     def __init__(self, tittel ="", sted ="", starttidspunkt= datetime.now(), varighet=0):
@@ -12,3 +13,4 @@ class avtale:
 
     def __str__(self):
         return f"Avtale:{self.Tittel}, Sted:{self.Sted}, klokken:{self.Starttidspunkt}, og varer:{self.Varighet} min"
+#test
