@@ -17,8 +17,8 @@ if __name__ == "__main__":
             "   [5]Avslutt"
         ]
         menyv = [
-            Funksjoner.utskrift_avtaler(list),
-            Funksjoner.ny_avtale()
+            Funksjoner.utskrift_avtaler,
+            Funksjoner.ny_avtale
         ]
         print("Valgene er")
         for x in range(len(menyl)):
