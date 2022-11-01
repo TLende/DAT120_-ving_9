@@ -37,7 +37,7 @@ def lage_fil_avtaler(list):
         doc.write(temp_str)
     doc.close()
 
-# Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og skriver ut i konsoll
+# Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
 def lese_fil_avtaler(list):
     doc = open("avtaler.txt", "r", encoding="UTF-8")
     print("Her er avtalene i fila:")
