@@ -1,5 +1,8 @@
 import Funksjoner
-
+liste = [
+    Funksjoner.stop,
+    Funksjoner.lese_fil_avtaler
+]
 while True:
     if input("dada") == "ok":
-        Funksjoner.stop()
+        liste[0]()
