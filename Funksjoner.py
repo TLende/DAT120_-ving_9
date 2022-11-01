@@ -85,6 +85,30 @@ def slett_avtale(list):
             except:
                 print("Ikke gyldig input")
 
+def rediger_avtale(list):
+    if len(list) == 0:
+        print("Ingen avtaler å redigere")
+    else:
+        utskrift_avtaler(list)
+        while True:
+            tempi = input("Skriv inn tallet til avtalen som skal redigeres")
+            try:
+                print(f"Valgt Avtale er : {list[len(tempi)]}")
+                while True:
+                    print("Hva vil du redigere")
+                    meny = [
+                        "   [1]Tittel",
+                        "   [2]Sted",
+                        "   [3]Start tidspunkt",
+                        "   [4]Varighet",
+                        "   [5]Ferdig",
+                        ]
+                    for x in len(meny):
+                        print(meny[x])
+                break
+            except:
+                print("Ikke gyldig input")
+
 
 
 #test av funksjoner

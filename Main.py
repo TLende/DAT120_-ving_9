@@ -11,12 +11,13 @@ liste = list()
 if __name__ == "__main__":
     while True:
         menyl = [
-            "   [1]Les avtaler fra fil"
-            "   [2]Skriv avtaler til fil"
-            "   [3]Skriv inn ny avtale"
-            "   [4]Skriv ut alle avtaler"
-            "   [5]Slett en avtale"
-            "   [6]Avslutt"
+            "   [1]Les avtaler fra fil",
+            "   [2]Skriv avtaler til fil",
+            "   [3]Skriv inn ny avtale",
+            "   [4]Skriv ut alle avtaler",
+            "   [5]Slett en avtale",
+            "   [6]Rediger avtale",
+            "   [7]Avslutt"
         ]
         menyv = [
             Funksjoner.lese_fil_avtaler,
@@ -24,6 +25,7 @@ if __name__ == "__main__":
             Funksjoner.ny_avtale,
             Funksjoner.utskrift_avtaler,
             Funksjoner.slett_avtale,
+            Funksjoner.rediger_avtale,
             quit
         ]
         print("Valgene er")
