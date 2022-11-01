@@ -34,5 +34,5 @@ if __name__ == "__main__":
             except TypeError:
                 menyv[int(input("Skriv inn valget her 1-5: "))-1](liste)
                 break
-            except:
+            except ValueError:
                 print("Ikke gyldig verdi prøv igjen")
