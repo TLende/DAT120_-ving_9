@@ -28,11 +28,12 @@ if __name__ == "__main__":
         for x in range(len(menyl)):
             print(menyl[x],end='\n')
         while True:
+            tempi = input("Skriv inn valget her 1-5: ")
             try:
-                menyv[int(input("Skriv inn valget her 1-5: "))-1]()
+                menyv[int(tempi)-1]()
                 break
             except TypeError:
-                menyv[int(input("Skriv inn valget her 1-5: "))-1](liste)
+                menyv[int(tempi)-1](liste)
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igjen")
