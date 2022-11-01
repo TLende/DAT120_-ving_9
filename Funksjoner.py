@@ -30,8 +30,8 @@ def utskrift_avtaler(list):
         print(i, list[i].Tittel, list[i])
 
 # Lager en fil med formatet: Tittel;Sted;Starttidspunkt;Varighet
-def lage_fil_avtaler(list):
-    doc = open ("avtaler.txt", "w", encoding="UTF-8")
+def lage_fil_avtaler():
+    doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
     for i in range(len(list)):
         temp_str = F"{list[i].Tittel};{list[i].Sted};{list[i].Starttidspunkt};{list[i].Varighet} \n"
         doc.write(temp_str)
@@ -44,7 +44,7 @@ def stop():
 def lese_fil_avtaler():
     while True:
         try:
-            doc = open(input("Skriv inn fil navn"), "r", encoding="UTF-8")
+            doc = open(input("Skriv inn fil navn: "), "r", encoding="UTF-8")
             print("Her er avtalene i fila:")
             for i in doc:
                 try:
