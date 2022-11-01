@@ -1,4 +1,5 @@
 from datetime import datetime
+import Funksjoner
 
 class avtale:
     def __init__(self, tittel ="", sted ="", starttidspunkt= datetime.now(), varighet=0):
