@@ -1,8 +1,6 @@
-def test():
-    return 1
-def test2():
-    return 2
+import Funksjoner
 
-liste = [test,test2]
 print(liste[0]())
-    
+while True:
+    if input("dada") == "ok":
+        Funksjoner.stop()
