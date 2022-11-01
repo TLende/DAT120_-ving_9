@@ -4,8 +4,8 @@ from datetime import datetime
 
 list = list()
 
-#list.append(klasser.avtale("Skule","uis",datetime.now(),20))
-#list.append(klasser.avtale("Test","Test2",datetime.now(),30))
+list.append(klasser.avtale("Skule","uis",datetime.now(),20))
+list.append(klasser.avtale("Test","Test2",datetime.now(),30))
 
 if __name__ == "__main__":
     while True:
@@ -20,7 +20,7 @@ if __name__ == "__main__":
             "placeholder",
             "placeholder",
             Funksjoner.ny_avtale,
-            Funksjoner.utskrift_avtaler(list),
+            Funksjoner.utskrift_avtaler,
             Funksjoner.stop
         ]
         print("Valgene er")
@@ -30,5 +30,8 @@ if __name__ == "__main__":
             try:
                 menyv[int(input("Skriv inn valget her 1-5: "))-1]()
                 break
+            except TypeError:
+                menyv[int(input("Skriv inn valget her 1-5: "))-1](list)
+                break
             except:
-                print("Ikke gyldig inputt prøv igjen")
+                print("Ikke gyldig verdi prøv igjen")
