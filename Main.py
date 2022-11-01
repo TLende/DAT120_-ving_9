@@ -17,14 +17,15 @@ if __name__ == "__main__":
             "   [5]Avslutt"
         ]
         menyv = [
+            print("placeholder"),
+            print("placeholder"),
+            Funksjoner.ny_avtale,
             Funksjoner.utskrift_avtaler,
-            Funksjoner.ny_avtale
+            print("placeholder")
         ]
         print("Valgene er")
         for x in range(len(menyl)):
             print(menyl[x],end='\n')
-        try:
-            menyv[int(input("Skriv inn valget her 1-5: "))-1]
-        except:
-            pass
+
+        menyv[int(input("Skriv inn valget her 1-5: "))-1]
     
