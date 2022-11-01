@@ -4,7 +4,7 @@ import Funksjoner
 from datetime import datetime
 
 # Lager ny avtale
-def ny_avtale():
+def ny_avtale(list):
     temp_tittel = input("Hva er navnet på avtalen?")
     temp_sted = input("Hva er stedet til avtalen?")
     temp_starttidspunkt = ""
@@ -21,7 +21,7 @@ def ny_avtale():
         except ValueError:
             print("Ugyldig verdi, prøv på nytt")
 
-    return klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet)
+    list.append(klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet))
 
 # Skriver ut avtaler i ei liste
 def utskrift_avtaler(list):
@@ -31,22 +31,31 @@ def utskrift_avtaler(list):
 
 # Lager en fil med formatet: Tittel;Sted;Starttidspunkt;Varighet
 def lage_fil_avtaler(list):
-    doc = open ("avtaler.txt", "w", encoding="UTF-8")
+    doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
     for i in range(len(list)):
         temp_str = F"{list[i].Tittel};{list[i].Sted};{list[i].Starttidspunkt};{list[i].Varighet} \n"
         doc.write(temp_str)
     doc.close()
 
+def stop():
+    print("Stopper programmet")
+    raise SystemExit
+
 # Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
 def lese_fil_avtaler(list):
-    doc = open("avtaler.txt", "r", encoding="UTF-8")
-    print("Her er avtalene i fila:")
-    for i in doc:
+    while True:
         try:
-            data_split = i.split(";")
-            list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+            doc = open(input("Skriv inn fil navn: "), "r", encoding="UTF-8")
+            print("Her er avtalene i fila:")
+            for i in doc:
+                try:
+                    data_split = i.split(";")
+                    list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+                except:
+                    pass
+            break
         except:
-            pass
+            print("File not found or error")
 
 # Funksjon som finner avtaler på en gitt dato
 def avtale_dato(dato,list):
