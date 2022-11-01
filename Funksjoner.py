@@ -73,6 +73,20 @@ def avtale_tittel(streng, list):
             return_str += F"{list[i].Tittel}:{list[i].Starttidspunkt} \n"
     return return_str
 
+def slett_avtale(list):
+    if len(list) == 0:
+        print("Ingen avtaler lokalt")
+    else:
+        utskrift_avtaler(list)
+        while True:
+            try:
+                list.pop(int(input("Skriv inn tallet til avtalen som skal slettes: ")))
+                break
+            except:
+                print("Ikke gyldig input")
+
+
+
 #test av funksjoner
 if __name__ == "__main__":
     list = list()
