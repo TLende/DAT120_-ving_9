@@ -5,8 +5,8 @@ from datetime import datetime
 date = datetime.now()
 liste = list()
 
-liste.append(klasser.avtale("Skule","uis",datetime.now(),20))
-liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
+#liste.append(klasser.avtale("Skule","uis",datetime.now(),20))
+#liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
 
 if __name__ == "__main__":
     while True:
