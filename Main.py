@@ -22,9 +22,9 @@ if __name__ == "__main__":
         ]
         print("Valgene er")
         for x in range(len(menyl)):
-            print(menyl[x],end='/n')
+            print(menyl[x],end='\n')
         try:
-            menyv[int(input("Skriv inn valget her 1-5: "))]
+            menyv[int(input("Skriv inn valget her 1-5: "))-1]
         except:
             pass
     
