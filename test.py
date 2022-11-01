@@ -4,5 +4,5 @@ def test2():
     return 2
 
 liste = [test,test2]
-liste[0]()
+print(liste[0]())
     
