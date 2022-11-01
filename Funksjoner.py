@@ -41,7 +41,7 @@ def stop():
     raise SystemExit
 
 # Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
-def lese_fil_avtaler():
+def lese_fil_avtaler(list):
     while True:
         try:
             doc = open(input("Skriv inn fil navn: "), "r", encoding="UTF-8")
