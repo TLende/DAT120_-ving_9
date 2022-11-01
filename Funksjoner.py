@@ -4,7 +4,7 @@ import Funksjoner
 from datetime import datetime
 
 # Lager ny avtale
-def ny_avtale():
+def ny_avtale(list):
     temp_tittel = input("Hva er navnet på avtalen?")
     temp_sted = input("Hva er stedet til avtalen?")
     temp_starttidspunkt = ""
@@ -21,7 +21,7 @@ def ny_avtale():
         except ValueError:
             print("Ugyldig verdi, prøv på nytt")
 
-    return klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet)
+    list.append(klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet))
 
 # Skriver ut avtaler i ei liste
 def utskrift_avtaler(list):
