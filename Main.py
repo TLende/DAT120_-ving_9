@@ -12,7 +12,7 @@ if __name__ == "__main__":
     while True:
         menyl = [
             "   [1]Les avtaler fra fil"
-            "   [2]Skriv avtaler fra fil"
+            "   [2]Skriv avtaler til fil"
             "   [3]Skriv inn ny avtale"
             "   [4]Skriv ut alle avtaler"
             "   [5]Avslutt"
