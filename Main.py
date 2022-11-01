@@ -22,7 +22,7 @@ if __name__ == "__main__":
             Funksjoner.lage_fil_avtaler,
             Funksjoner.ny_avtale,
             Funksjoner.utskrift_avtaler,
-            exit
+            quit
         ]
         print("Valgene er")
         for x in range(len(menyl)):
