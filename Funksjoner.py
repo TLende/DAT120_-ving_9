@@ -34,6 +34,9 @@ def lage_fil_avtaler(list):
         doc.write(temp_str)
     doc.close()
 
+def stop():
+    raise SystemExit
+
 
 #test
 if __name__ == "__main__":
