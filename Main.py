@@ -18,8 +18,8 @@ if __name__ == "__main__":
             "   [5]Avslutt"
         ]
         menyv = [
-            Funksjoner.lage_fil_avtaler,
             Funksjoner.lese_fil_avtaler,
+            Funksjoner.lage_fil_avtaler,
             Funksjoner.ny_avtale,
             Funksjoner.utskrift_avtaler,
             Funksjoner.stop
