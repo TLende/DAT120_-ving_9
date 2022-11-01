@@ -1,9 +1,9 @@
 import klasser
 import Funksjoner
 
-import csv
 from datetime import datetime
 
+# Lager ny avtale
 def ny_avtale():
     temp_tittel = input("Hva er navnet på avtalen?")
     temp_sted = input("Hva er stedet til avtalen?")
@@ -23,10 +23,13 @@ def ny_avtale():
 
     return klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet)
 
+# Skriver ut avtaler i ei liste
 def utskrift_avtaler(list):
+    print("Skriver ut alle avtalene i lista:")
     for i in range(len(list)):
         print(i, list[i].Tittel, list[i])
 
+# Lager en fil med formatet: Tittel;Sted;Starttidspunkt;Varighet
 def lage_fil_avtaler(list):
     doc = open ("avtaler.txt", "w", encoding="UTF-8")
     for i in range(len(list)):
@@ -37,14 +40,51 @@ def lage_fil_avtaler(list):
 def stop():
     raise SystemExit
 
+# Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
+def lese_fil_avtaler(list):
+    doc = open("avtaler.txt", "r", encoding="UTF-8")
+    print("Her er avtalene i fila:")
+    for i in doc:
+        try:
+            data_split = i.split(";")
+            list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+        except:
+            pass
 
-#test
+# Funksjon som finner avtaler på en gitt dato
+def avtale_dato(dato,list):
+    print(F"Her er alle avtalene som har dato:{dato.date()}")
+    return_str = ""
+    for i in range(len(list)):
+        temp_dato = list[i].Starttidspunkt.date()
+        if temp_dato == dato.date():
+            return_str += F"{list[i].Tittel}:{temp_dato} \n"
+    return return_str
+            
+# Funksjon som leter etter tittler til avtaler i en streng
+def avtale_tittel(streng, list):
+    print(F"Her er alle avtalene som har tittelen: {streng}")
+    return_str = ""
+    for i in range(len(list)):
+        tittel = list[i].Tittel
+        if tittel.lower() == streng.lower():
+            return_str += F"{list[i].Tittel}:{list[i].Starttidspunkt} \n"
+    return return_str
+
+#test av funksjoner
 if __name__ == "__main__":
     list = list()
+    dato1 = datetime(2022,1,1,12,0)
+    dato2 = datetime(2022,2,1,12,0)
+    tittel = "test"
 
-    for i in range(2):
-        temp = Funksjoner.ny_avtale()
-        list.append(temp)
+    list.append(klasser.avtale("test2","uis",dato1,20))
+    list.append(klasser.avtale("Test","Test2",dato2,30))
+    
+    Funksjoner.lese_fil_avtaler(list)
+
+    print(Funksjoner.avtale_dato(dato1, list))
+    print(Funksjoner.avtale_tittel(tittel, list))
 
     Funksjoner.utskrift_avtaler(list)
     Funksjoner.lage_fil_avtaler(list)
