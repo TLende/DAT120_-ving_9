@@ -15,13 +15,15 @@ if __name__ == "__main__":
             "   [2]Skriv avtaler til fil"
             "   [3]Skriv inn ny avtale"
             "   [4]Skriv ut alle avtaler"
-            "   [5]Avslutt"
+            "   [5]Slett en avtale"
+            "   [6]Avslutt"
         ]
         menyv = [
             Funksjoner.lese_fil_avtaler,
             Funksjoner.lage_fil_avtaler,
             Funksjoner.ny_avtale,
             Funksjoner.utskrift_avtaler,
+            Funksjoner.slett_avtale,
             quit
         ]
         print("Valgene er")
