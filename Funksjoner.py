@@ -1,10 +1,9 @@
 import klasser
 import Funksjoner
 
-import csv
 from datetime import datetime
 
-
+# Lager ny avtale
 def ny_avtale():
     temp_tittel = input("Hva er navnet på avtalen?")
     temp_sted = input("Hva er stedet til avtalen?")
@@ -24,10 +23,12 @@ def ny_avtale():
 
     return klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet)
 
+# Skriver ut avtaler i ei liste
 def utskrift_avtaler(list):
     for i in range(len(list)):
         print(i, list[i].Tittel, list[i])
 
+# Lager en fil med formatet: Tittel;Sted;Starttidspunkt;Varighet
 def lage_fil_avtaler(list):
     doc = open ("avtaler.txt", "w", encoding="UTF-8")
     for i in range(len(list)):
@@ -35,14 +36,38 @@ def lage_fil_avtaler(list):
         doc.write(temp_str)
     doc.close()
 
+# Funksjon som finner avtaler på en gitt dato
+def avtale_dato(dato,list):
+    print(F"Her er alle avtalene som har dato:{dato.date()}")
+    return_str = ""
+    for i in range(len(list)):
+        temp_dato = list[i].Starttidspunkt.date()
+        if temp_dato == dato.date():
+            return_str += F"{list[i].Tittel}:{temp_dato} \n"
+    return return_str
+            
+# Funksjon som leter etter titler til avtaler i en streng
+def avtale_tittel(streng, list):
+    print(F"Her er alle avtalene som har tittelen: {streng}")
+    return_str = ""
+    for i in range(len(list)):
+        tittel_lower = list[i].Tittel.lower()
+        streng_lower = streng.lower()
+        if tittel_lower == streng_lower:
+            return_str += F"{list[i].Tittel}:{list[i].Starttidspunkt}"
+    return return_str
 
 #test
 if __name__ == "__main__":
     list = list()
+    dato = datetime(2022,1,1,12,0)
+    tittel = "test"
 
-    for i in range(2):
-        temp = Funksjoner.ny_avtale()
-        list.append(temp)
+    list.append(klasser.avtale("Skule","uis",dato,20))
+    list.append(klasser.avtale("Test","Test2",dato,30))
+    
+    print(Funksjoner.avtale_dato(dato, list))
+    print(Funksjoner.avtale_tittel(tittel, list))
 
     Funksjoner.utskrift_avtaler(list)
     Funksjoner.lage_fil_avtaler(list)
