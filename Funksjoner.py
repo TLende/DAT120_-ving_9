@@ -4,6 +4,18 @@ import Funksjoner
 import csv
 from datetime import datetime
 
+def meny():
+    while True:
+        menyl = [
+            "   [1]Les avtaler fra fil"
+            "   [2]Skriv avtaler fra fil"
+            "   [3]Skriv inn ny avtale"
+            "   [4]Skriv ut alle avtaler"
+            "   [5]Avslutt"
+        ]
+        print("Valgene er")
+        for x in range(len(menyl)):
+            print(menyl[x])
 
 def ny_avtale():
     temp_tittel = input("Hva er navnet på avtalen?")
