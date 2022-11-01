@@ -91,11 +91,10 @@ def rediger_avtale(list):
     else:
         utskrift_avtaler(list)
         while True:
-            tempi = input("Skriv inn tallet til avtalen som skal redigeres")
+            tempi = input("Skriv inn tallet til avtalen som skal redigeres: ")
             try:
                 print(f"Valgt Avtale er : {list[len(tempi)]}")
                 while True:
-                    print("Hva vil du redigere")
                     meny = [
                         "   [1]Tittel",
                         "   [2]Sted",
@@ -103,8 +102,23 @@ def rediger_avtale(list):
                         "   [4]Varighet",
                         "   [5]Ferdig",
                         ]
+                    menyvalg = [
+                        placeholder,
+                        placeholder,
+                        placeholder,
+                        placeholder,
+                        placeholder
+                        ]
+                    print("Hva vil du redigere")
                     for x in len(meny):
                         print(meny[x])
+                    while True:
+                        temp = input("Skriv inn valget her 1-5")
+                        try:
+                            menyvalg[int(temp)-1]()
+                            break
+                        except:
+                            print("Ikke gyldig verdi prøv igjen")
                 break
             except:
                 print("Ikke gyldig input")
