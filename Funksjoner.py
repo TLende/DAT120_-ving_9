@@ -25,6 +25,7 @@ def ny_avtale():
 
 # Skriver ut avtaler i ei liste
 def utskrift_avtaler(list):
+    print("Skriver ut alle avtalene i lista:")
     for i in range(len(list)):
         print(i, list[i].Tittel, list[i])
 
@@ -36,6 +37,17 @@ def lage_fil_avtaler(list):
         doc.write(temp_str)
     doc.close()
 
+# Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og skriver ut i konsoll
+def lese_fil_avtaler(list):
+    doc = open("avtaler.txt", "r", encoding="UTF-8")
+    print("Her er avtalene i fila:")
+    for i in doc:
+        try:
+            data_split = i.split(";")
+            list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+        except:
+            pass
+
 # Funksjon som finner avtaler på en gitt dato
 def avtale_dato(dato,list):
     print(F"Her er alle avtalene som har dato:{dato.date()}")
@@ -46,27 +58,29 @@ def avtale_dato(dato,list):
             return_str += F"{list[i].Tittel}:{temp_dato} \n"
     return return_str
             
-# Funksjon som leter etter titler til avtaler i en streng
+# Funksjon som leter etter tittler til avtaler i en streng
 def avtale_tittel(streng, list):
     print(F"Her er alle avtalene som har tittelen: {streng}")
     return_str = ""
     for i in range(len(list)):
-        tittel_lower = list[i].Tittel.lower()
-        streng_lower = streng.lower()
-        if tittel_lower == streng_lower:
-            return_str += F"{list[i].Tittel}:{list[i].Starttidspunkt}"
+        tittel = list[i].Tittel
+        if tittel.lower() == streng.lower():
+            return_str += F"{list[i].Tittel}:{list[i].Starttidspunkt} \n"
     return return_str
 
-#test
+#test av funksjoner
 if __name__ == "__main__":
     list = list()
-    dato = datetime(2022,1,1,12,0)
+    dato1 = datetime(2022,1,1,12,0)
+    dato2 = datetime(2022,2,1,12,0)
     tittel = "test"
 
-    list.append(klasser.avtale("Skule","uis",dato,20))
-    list.append(klasser.avtale("Test","Test2",dato,30))
+    list.append(klasser.avtale("test2","uis",dato1,20))
+    list.append(klasser.avtale("Test","Test2",dato2,30))
     
-    print(Funksjoner.avtale_dato(dato, list))
+    Funksjoner.lese_fil_avtaler(list)
+
+    print(Funksjoner.avtale_dato(dato1, list))
     print(Funksjoner.avtale_tittel(tittel, list))
 
     Funksjoner.utskrift_avtaler(list)
