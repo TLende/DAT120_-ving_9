@@ -13,9 +13,17 @@ def meny():
             "   [4]Skriv ut alle avtaler"
             "   [5]Avslutt"
         ]
+        menyv = [
+            utskrift_avtaler(),
+            ny_avtale()
+        ]
         print("Valgene er")
         for x in range(len(menyl)):
-            print(menyl[x])
+            print(menyl[x],end='/n')
+        try:
+            menyv[int(input("Skriv inn valget her 1-5: "))]
+        except:
+            pass
 
 def ny_avtale():
     temp_tittel = input("Hva er navnet på avtalen?")
