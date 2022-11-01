@@ -17,12 +17,24 @@ def guileggtil():
     window = tk.Tk()
     Overskrift = tk.Label(text="Legg til avtale",font=("",15))
     Overskrift.pack()
-    Teskst = tk.Label(text="")
-    TeskstE = tk.Entry()
-    Teskst.pack()
-    TeskstE.pack()
+    Tittel = tk.Label(text="Tittel")
+    TittelE = tk.Entry()
+    Tittel.pack()
+    TittelE.pack()
+    Sted = tk.Label(text="Sted")
+    StedE = tk.Entry()
+    Sted.pack()
+    StedE.pack()
+    Tid = tk.Label(text="Tid")
+    TidE = tk.Entry()
+    TidB = tk.Button(text="Sett tid til nå")
+    Tid.pack()
+    TidE.pack()
+    TidB.pack()
     Leggtil = tk.Button(text="Legg til")
     Leggtil.pack()
+    Meny = tk.Button(text="Tilbake til meny")
+    Meny.pack()
     window.mainloop()
 
 def guiavtaleoversikt():
@@ -33,6 +45,8 @@ def guiavtaleoversikt():
         for linje in fil:
             Teskst = tk.Label(text=linje.rstrip('\n'))
             Teskst.pack()
+    Meny = tk.Button(text="Tilbake til meny")
+    Meny.pack()
     window.mainloop()
 
 if __name__ == "__main__":
