@@ -37,10 +37,6 @@ def lage_fil_avtaler(list):
         doc.write(temp_str)
     doc.close()
 
-def stop():
-    print("Stopper programmet")
-    raise SystemExit
-
 # Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
 def lese_fil_avtaler(list):
     while True:
