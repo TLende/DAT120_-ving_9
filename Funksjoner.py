@@ -41,15 +41,20 @@ def stop():
     raise SystemExit
 
 # Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
-def lese_fil_avtaler(list):
-    doc = open("avtaler.txt", "r", encoding="UTF-8")
-    print("Her er avtalene i fila:")
-    for i in doc:
+def lese_fil_avtaler():
+    while True:
         try:
-            data_split = i.split(";")
-            list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+            doc = open(input("Skriv inn fil navn"), "r", encoding="UTF-8")
+            print("Her er avtalene i fila:")
+            for i in doc:
+                try:
+                    data_split = i.split(";")
+                    list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+                except:
+                    pass
+            break
         except:
-            pass
+            print("File not found or error")
 
 # Funksjon som finner avtaler på en gitt dato
 def avtale_dato(dato,list):
