@@ -1,5 +1,6 @@
 import Funksjoner
 import klasser
+from datetime import datetime
 
 def liste(list,x,y):
     meny = [
