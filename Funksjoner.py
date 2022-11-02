@@ -97,13 +97,26 @@ def rediger_avtale(list):
             try:
                 print(f"Valgt Avtale er : {list[tempi]}")
                 while True:
-                    print("Skriv in ny avtale")
+                    meny = [
+                        "   [1]Rediger Tittel",
+                        "   [2]Rediger Sted",
+                        "   [3]Rediger Starttidspunkt",
+                        "   [4]Rediger Varighet"
+                        "   [5]Bekreft"
+                    ]
+                    menyf = [
+                        Rtittel,
+                        Rsted,
+                        Rstartstidspunkt,
+                        Rvarigjet,
+                    ]
+                    print("Valgene er:")
+                    for x in range(len(meny)):
+                        print(meny[x])
                     try:
-                         list[tempi] = klasser.avtale(input("Avtale:"), input("Sted:"),datetime(int(input("År:")),int(input("Måned:")),int(input("Dag:")),int(input("Time:")),int(input("Minutt:"))),int(input("Varighet:")) )
-                         break
+                        menyf[int(input("Skriv inn valget her 1-5: "))-1](list)
                     except:
-                        print("Ikke gyldig verdi prøv igjen")
-                break
+                        print("Ikke gyldig verdi prøv igjen")  
             except:
                 print("Ikke gyldig input")
 
@@ -113,7 +126,7 @@ def Rtittel(list,x):
 def Rsted(list,x):
     print(f"Nåværende Sted {list[x].Sted}")
     list[x].Sted = input("Nytt Sted")
-def RStartstidspunkt(list,x):
+def Rstartstidspunkt(list,x):
     print(f"Nåværende startstidspunkt: {list[x].Startstidspunkt}")
     while True:
         try:
@@ -122,11 +135,11 @@ def RStartstidspunkt(list,x):
             break
         except ValueError:
             print("Ugyldig verdi! Prøv på nytt")
-def Rtittel(list,x):
-    print(f"Nåværende Tittel: {list[x].Varighet}")
+def Rvarigjet(list,x):
+    print(f"Nåværende varighet: {list[x].Varighet}")
     while True:
         try:
-            list[x].Varighet = int(input("Hvor lenge varer avtalen?"))
+            list[x].Varighet = int(input("Ny varighet: "))
             break
         except ValueError:
             print("Ugyldig verdi! Prøv på nytt")
