@@ -9,6 +9,8 @@ liste = list()
 #liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
 
 if __name__ == "__main__":
+    liste.append(klasser.avtale("Skule","uis",datetime.now(),20))
+    liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
     while True:
         menyl = [
             "   [1]Les avtaler fra fil",

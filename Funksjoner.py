@@ -91,39 +91,22 @@ def rediger_avtale(list):
     else:
         utskrift_avtaler(list)
         while True:
-            tempi = input("Skriv inn tallet til avtalen som skal redigeres: ")
+            tempi = int(input("Skriv inn tallet til avtalen som skal redigeres: "))
             try:
-                print(f"Valgt Avtale er : {list[len(tempi)]}")
+                print(f"Valgt Avtale er : {list[tempi]}")
                 while True:
-                    meny = [
-                        "   [1]Tittel",
-                        "   [2]Sted",
-                        "   [3]Start tidspunkt",
-                        "   [4]Varighet",
-                        "   [5]Ferdig",
-                        ]
-                    menyvalg = [
-                        placeholder,
-                        placeholder,
-                        placeholder,
-                        placeholder,
-                        placeholder
-                        ]
-                    print("Hva vil du redigere")
-                    for x in len(meny):
-                        print(meny[x])
-                    while True:
-                        temp = input("Skriv inn valget her 1-5")
-                        try:
-                            menyvalg[int(temp)-1]()
-                            break
-                        except:
-                            print("Ikke gyldig verdi prøv igjen")
+                    print("Skriv in ny avtale")
+                    try:
+                         list[tempi] = klasser.avtale(input("Avtale:"), input("Sted:"),datetime(int(input("År:")),int(input("Måned:")),int(input("Dag:")),int(input("Time:")),int(input("Minutt:"))),int(input("Varighet:")) )
+                         break
+                    except:
+                        print("Ikke gyldig verdi prøv igjen")
                 break
             except:
                 print("Ikke gyldig input")
 
-
+def rediger_avtale_element(x, list):
+    list[x] = Funksjoner.ny_avtale(list)
 
 #test av funksjoner
 if __name__ == "__main__":
