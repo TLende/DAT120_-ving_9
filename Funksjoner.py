@@ -37,10 +37,6 @@ def lage_fil_avtaler(list):
         doc.write(temp_str)
     doc.close()
 
-def stop():
-    print("Stopper programmet")
-    raise SystemExit
-
 # Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
 def lese_fil_avtaler(list):
     while True:
@@ -76,6 +72,58 @@ def avtale_tittel(streng, list):
         if tittel.lower() == streng.lower():
             return_str += F"{list[i].Tittel}:{list[i].Starttidspunkt} \n"
     return return_str
+
+def slett_avtale(list):
+    if len(list) == 0:
+        print("Ingen avtaler lokalt")
+    else:
+        utskrift_avtaler(list)
+        while True:
+            try:
+                list.pop(int(input("Skriv inn tallet til avtalen som skal slettes: ")))
+                break
+            except:
+                print("Ikke gyldig input")
+
+def rediger_avtale(list):
+    if len(list) == 0:
+        print("Ingen avtaler å redigere")
+    else:
+        utskrift_avtaler(list)
+        while True:
+            tempi = input("Skriv inn tallet til avtalen som skal redigeres: ")
+            try:
+                print(f"Valgt Avtale er : {list[len(tempi)]}")
+                while True:
+                    meny = [
+                        "   [1]Tittel",
+                        "   [2]Sted",
+                        "   [3]Start tidspunkt",
+                        "   [4]Varighet",
+                        "   [5]Ferdig",
+                        ]
+                    menyvalg = [
+                        placeholder,
+                        placeholder,
+                        placeholder,
+                        placeholder,
+                        placeholder
+                        ]
+                    print("Hva vil du redigere")
+                    for x in len(meny):
+                        print(meny[x])
+                    while True:
+                        temp = input("Skriv inn valget her 1-5")
+                        try:
+                            menyvalg[int(temp)-1]()
+                            break
+                        except:
+                            print("Ikke gyldig verdi prøv igjen")
+                break
+            except:
+                print("Ikke gyldig input")
+
+
 
 #test av funksjoner
 if __name__ == "__main__":

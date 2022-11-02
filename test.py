@@ -1,8 +1,8 @@
-def test():
-    return 1
-def test2():
-    return 2
-
-liste = [test,test2]
-print(liste[0]())
-    
+import Funksjoner
+liste = [
+    Funksjoner.stop,
+    Funksjoner.lese_fil_avtaler
+]
+while True:
+    if input("dada") == "ok":
+        liste[0]()

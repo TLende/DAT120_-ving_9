@@ -11,28 +11,33 @@ liste = list()
 if __name__ == "__main__":
     while True:
         menyl = [
-            "   [1]Les avtaler fra fil"
-            "   [2]Skriv avtaler til fil"
-            "   [3]Skriv inn ny avtale"
-            "   [4]Skriv ut alle avtaler"
-            "   [5]Avslutt"
+            "   [1]Les avtaler fra fil",
+            "   [2]Skriv avtaler til fil",
+            "   [3]Skriv inn ny avtale",
+            "   [4]Skriv ut alle avtaler",
+            "   [5]Slett en avtale",
+            "   [6]Rediger avtale",
+            "   [7]Avslutt"
         ]
         menyv = [
             Funksjoner.lese_fil_avtaler,
             Funksjoner.lage_fil_avtaler,
             Funksjoner.ny_avtale,
             Funksjoner.utskrift_avtaler,
-            Funksjoner.stop
+            Funksjoner.slett_avtale,
+            Funksjoner.rediger_avtale,
+            quit
         ]
         print("Valgene er")
         for x in range(len(menyl)):
             print(menyl[x],end='\n')
         while True:
+            tempi = input("Skriv inn valget her 1-5: ")
             try:
-                menyv[int(input("Skriv inn valget her 1-5: "))-1]()
+                menyv[int(tempi)-1]()
                 break
             except TypeError:
-                menyv[int(input("Skriv inn valget her 1-5: "))-1](liste)
+                menyv[int(tempi)-1](liste)
                 break
-            except:
+            except ValueError:
                 print("Ikke gyldig verdi prøv igjen")
