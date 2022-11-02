@@ -9,8 +9,6 @@ liste = list()
 #liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
 
 if __name__ == "__main__":
-    liste.append(klasser.avtale("Skule","uis",datetime.now(),20))
-    liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
     while True:
         menyl = [
             "   [1]Les avtaler fra fil",
@@ -34,7 +32,7 @@ if __name__ == "__main__":
         for x in range(len(menyl)):
             print(menyl[x],end='\n')
         while True:
-            tempi = input("Skriv inn valget her 1-5: ")
+            tempi = input("Skriv inn valget her 1-7: ")
             try:
                 menyv[int(tempi)-1]()
                 break

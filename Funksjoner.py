@@ -45,10 +45,12 @@ def lese_fil_avtaler(list):
             print("Her er avtalene i fila:")
             for i in doc:
                 try:
+                    print(i)
                     data_split = i.split(";")
                     list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
                 except:
                     pass
+                print("Blir lagra i lista")
             break
         except:
             print("File not found or error")
