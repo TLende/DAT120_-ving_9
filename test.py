@@ -17,3 +17,4 @@ lister.append(klasser.avtale("Skule","uis",datetime.now(),20))
 
 liste(lister,x,y)
 print(lister[0])
+print(input("input: ", "Text"))
