@@ -4,7 +4,7 @@ import Funksjoner
 from datetime import datetime
 
 # Lager ny avtale
-def ny_avtale():
+def ny_avtale(list):
     temp_tittel = input("Hva er navnet på avtalen?")
     temp_sted = input("Hva er stedet til avtalen?")
     temp_starttidspunkt = ""
@@ -21,7 +21,7 @@ def ny_avtale():
         except ValueError:
             print("Ugyldig verdi, prøv på nytt")
 
-    return klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet)
+    list.append(klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet))
 
 # Skriver ut avtaler i ei liste
 def utskrift_avtaler(list):
@@ -31,22 +31,29 @@ def utskrift_avtaler(list):
 
 # Lager en fil med formatet: Tittel;Sted;Starttidspunkt;Varighet
 def lage_fil_avtaler(list):
-    doc = open ("avtaler.txt", "w", encoding="UTF-8")
+    doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
     for i in range(len(list)):
         temp_str = F"{list[i].Tittel};{list[i].Sted};{list[i].Starttidspunkt};{list[i].Varighet} \n"
         doc.write(temp_str)
     doc.close()
 
-# Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og skriver ut i konsoll
+# Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
 def lese_fil_avtaler(list):
-    doc = open("avtaler.txt", "r", encoding="UTF-8")
-    print("Her er avtalene i fila:")
-    for i in doc:
+    while True:
         try:
-            data_split = i.split(";")
-            list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+            doc = open(input("Skriv inn fil navn: "), "r", encoding="UTF-8")
+            print("Her er avtalene i fila:")
+            for i in doc:
+                try:
+                    print(i)
+                    data_split = i.split(";")
+                    list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+                except:
+                    pass
+                print("Blir lagra i lista")
+            break
         except:
-            pass
+            print("File not found or error")
 
 # Funksjon som finner avtaler på en gitt dato
 def avtale_dato(dato,list):
@@ -67,6 +74,41 @@ def avtale_tittel(streng, list):
         if tittel.lower() == streng.lower():
             return_str += F"{list[i].Tittel}:{list[i].Starttidspunkt} \n"
     return return_str
+
+def slett_avtale(list):
+    if len(list) == 0:
+        print("Ingen avtaler lokalt")
+    else:
+        utskrift_avtaler(list)
+        while True:
+            try:
+                list.pop(int(input("Skriv inn tallet til avtalen som skal slettes: ")))
+                break
+            except:
+                print("Ikke gyldig input")
+
+def rediger_avtale(list):
+    if len(list) == 0:
+        print("Ingen avtaler å redigere")
+    else:
+        utskrift_avtaler(list)
+        while True:
+            tempi = int(input("Skriv inn tallet til avtalen som skal redigeres: "))
+            try:
+                print(f"Valgt Avtale er : {list[tempi]}")
+                while True:
+                    print("Skriv in ny avtale")
+                    try:
+                         list[tempi] = klasser.avtale(input("Avtale:"), input("Sted:"),datetime(int(input("År:")),int(input("Måned:")),int(input("Dag:")),int(input("Time:")),int(input("Minutt:"))),int(input("Varighet:")) )
+                         break
+                    except:
+                        print("Ikke gyldig verdi prøv igjen")
+                break
+            except:
+                print("Ikke gyldig input")
+
+def rediger_avtale_element(x, list):
+    list[x] = Funksjoner.ny_avtale(list)
 
 #test av funksjoner
 if __name__ == "__main__":
