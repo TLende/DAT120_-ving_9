@@ -107,6 +107,30 @@ def rediger_avtale(list):
             except:
                 print("Ikke gyldig input")
 
+def Rtittel(list,x):
+    print(f"Nåværende Tittel: {list[x].Tittel}")
+    list[x].Tittel = input("Ny Tittel")
+def Rsted(list,x):
+    print(f"Nåværende Sted {list[x].Sted}")
+    list[x].Sted = input("Nytt Sted")
+def RStartstidspunkt(list,x):
+    print(f"Nåværende startstidspunkt: {list[x].Startstidspunkt}")
+    while True:
+        try:
+            print("Nytt startstidspunkt: ", end="")
+            list[x].Startstidspunkt = datetime(int(input("År:")),int(input("Måned:")),int(input("Dag:")),int(input("Time:")),int(input("Minutt:")))
+            break
+        except ValueError:
+            print("Ugyldig verdi! Prøv på nytt")
+def Rtittel(list,x):
+    print(f"Nåværende Tittel: {list[x].Varighet}")
+    while True:
+        try:
+            list[x].Varighet = int(input("Hvor lenge varer avtalen?"))
+            break
+        except ValueError:
+            print("Ugyldig verdi! Prøv på nytt")
+
 def rediger_avtale_element(x, list):
     list[x] = Funksjoner.ny_avtale(list)
 
