@@ -101,7 +101,7 @@ def rediger_avtale(list):
                         "   [1]Rediger Tittel",
                         "   [2]Rediger Sted",
                         "   [3]Rediger Starttidspunkt",
-                        "   [4]Rediger Varighet"
+                        "   [4]Rediger Varighet",
                         "   [5]Bekreft"
                     ]
                     menyf = [
@@ -114,9 +114,11 @@ def rediger_avtale(list):
                     for x in range(len(meny)):
                         print(meny[x])
                     try:
-                        menyf[int(input("Skriv inn valget her 1-5: "))-1](list)
+                        menyf[int(input("Skriv inn valget her 1-5: "))-1](list,tempi)
+                        break
                     except:
-                        print("Ikke gyldig verdi prøv igjen")  
+                        print("Ikke gyldig verdi prøv igjen") 
+                break 
             except:
                 print("Ikke gyldig input")
 
