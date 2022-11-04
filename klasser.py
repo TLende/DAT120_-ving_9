@@ -15,4 +15,4 @@ class avtale:
     def __str__(self):
         return f"Avtale:{self.Tittel}, Sted:{self.Sted}, Tid:{self.Starttidspunkt}, og varer:{self.Varighet} min"
 
-class brekreft(exception): pass
+class brekreft(Exception): pass
