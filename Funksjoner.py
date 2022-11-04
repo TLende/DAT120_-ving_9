@@ -109,6 +109,7 @@ def rediger_avtale(list):
                         Rsted,
                         Rstartstidspunkt,
                         Rvarigjet,
+                        Rbekreft
                     ]
                     print("Valgene er:")
                     for x in range(len(meny)):
