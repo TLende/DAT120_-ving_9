@@ -116,6 +116,7 @@ def rediger_avtale(list):
                         print(meny[x])
                     try:
                         menyf[int(input("Skriv inn valget her 1-5: "))-1](list,tempi)
+                    except klasser.brekreft:
                         break
                     except:
                         print("Ikke gyldig verdi prøv igjen") 
@@ -148,7 +149,8 @@ def Rvarigjet(list,x):
             print("Ugyldig verdi! Prøv på nytt")
 def Rbekreft(lsit,x):
     print(f"Ny avtale {list[x]}")
-    break
+    raise klasser.brekreft
+    
 
 def rediger_avtale_element(x, list):
     list[x] = Funksjoner.ny_avtale(list)

@@ -1,4 +1,5 @@
 from datetime import datetime
+from logging import exception
 import Funksjoner
 
 class avtale:
@@ -13,3 +14,5 @@ class avtale:
 
     def __str__(self):
         return f"Avtale:{self.Tittel}, Sted:{self.Sted}, Tid:{self.Starttidspunkt}, og varer:{self.Varighet} min"
+
+class brekreft(exception): pass
