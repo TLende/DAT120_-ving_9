@@ -126,10 +126,10 @@ def rediger_avtale(list):
 
 def Rtittel(list,x):
     print(f"Nåværende Tittel: {list[x].Tittel}")
-    list[x].Tittel = input("Ny Tittel")
+    list[x].Tittel = input("Ny Tittel:")
 def Rsted(list,x):
-    print(f"Nåværende Sted {list[x].Sted}")
-    list[x].Sted = input("Nytt Sted")
+    print(f"Nåværende Sted: {list[x].Sted}")
+    list[x].Sted = input("Nytt Sted:")
 def Rstartstidspunkt(list,x):
     print(f"Nåværende startstidspunkt: {list[x].Startstidspunkt}")
     while True:
@@ -147,8 +147,8 @@ def Rvarigjet(list,x):
             break
         except ValueError:
             print("Ugyldig verdi! Prøv på nytt")
-def Rbekreft(lsit,x):
-    print(f"Ny avtale {list[x]}")
+def Rbekreft(list,x):
+    print(f"Ny avtale: {list[x]}")
     raise klasser.brekreft
     
 
