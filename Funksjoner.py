@@ -145,6 +145,9 @@ def Rvarigjet(list,x):
             break
         except ValueError:
             print("Ugyldig verdi! Prøv på nytt")
+def Rbekreft(lsit,x):
+    print(f"Ny avtale {list[x]}")
+    break
 
 def rediger_avtale_element(x, list):
     list[x] = Funksjoner.ny_avtale(list)
