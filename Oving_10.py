@@ -2,20 +2,8 @@ import klasser
 import Funksjoner
 
 def nyttsted():
-    return Sted(input("StedID:"), input("Sted navn:"), input("gateadresse:"), int(input("postnr:")), input("poststed:"))
+    return klasser.Sted(input("StedID:"), input("Sted navn:"), input("gateadresse:"), int(input("postnr:")), input("poststed:"))
 
-#Lager klasse "Kategori"
-class Kategori:
-    def __init__(self, ID="", navn="", prioritet=1):
-        try:
-            self.ID = str(ID)
-            self.Tittel = str(navn)
-            self.prioritet = str(prioritet)
-        except ValueError:
-            print ("Ikke gyldig, prøv igjen")
-        
-    def __str__(self):
-        return f"Navn:{self.Tittel}, ID:{self.ID}, Prioritet:{self.prioritet}"
 
 #Lager ny kategori
 def ny_kategori():
@@ -23,11 +11,11 @@ def ny_kategori():
         kategori_navn = input("Hva er navnet på kategorien?")
         kategori_id = input("Hva er id til kategorien?")
         kategori_prioritet = int(input("Hvor høy prioritet? Legg inn et tall mellom 1 og 3 der 1 er lite viktig og 3 er svært viktig."))
-        return Kategori(kategori_id, kategori_navn, kategori_prioritet)
+        return klasser.Kategori(kategori_id, kategori_navn, kategori_prioritet)
     except ValueError:
         print("Ikke gyldig, prøv igjen")
     
-    return (a(kategori_navn, kategori_id, kategori_prioritet))
+    return klasser.Kategori(kategori_navn, kategori_id, kategori_prioritet)
     
 #Lager en fil "Navn; id; Prioritet"
 def lage_fil_kategori(list):
