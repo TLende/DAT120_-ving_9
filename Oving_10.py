@@ -1,3 +1,9 @@
+import klasser
+import Funksjoner
+
+def nyttsted():
+    return Sted(input("StedID:"), input("Sted navn:"), input("gateadresse:"), int(input("postnr:")), input("poststed:"))
+
 #Lager klasse "Kategori"
 class Kategori:
     def __init__(self, ID="", navn="", prioritet=1):
@@ -22,7 +28,6 @@ def ny_kategori():
         print("Ikke gyldig, prøv igjen")
     
     return (a(kategori_navn, kategori_id, kategori_prioritet))
-
     
 #Lager en fil "Navn; id; Prioritet"
 def lage_fil_kategori(list):
@@ -32,9 +37,10 @@ def lage_fil_kategori(list):
         doc.write(kategori_str)
     doc.close()
 
-if __name__ == "__main__":
-    liste = list()
-    liste.append(ny_kategori())
-    x=Kategori
-    a=lage_fil_kategori(liste)
 
+def lage_stedliste(list):
+    doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
+    for i in range(len(list)):
+        temp_str = F"{list[i].ID};{list[i].Tittel};{list[i].gateadresse};{list[i].postnr};{list[i].poststed} \n"
+        doc.write(temp_str)
+    doc.close()
