@@ -125,5 +125,6 @@ if __name__ == "__main__":
     print(Funksjoner.avtale_dato(dato1, list))
     print(Funksjoner.avtale_tittel(tittel, list))
 
+
     Funksjoner.utskrift_klasser(list)
     Funksjoner.lage_fil_avtaler(list)
