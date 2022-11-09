@@ -23,7 +23,7 @@ if __name__ == "__main__":
             Funksjoner.lese_fil_avtaler,
             Funksjoner.lage_fil_avtaler,
             Funksjoner.ny_avtale,
-            Funksjoner.utskrift_avtaler,
+            Funksjoner.utskrift_klasser,
             Funksjoner.slett_avtale,
             Funksjoner.rediger_avtale,
             quit
