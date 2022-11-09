@@ -36,14 +36,14 @@ def lage_fil_avtaler(list):
     for i in range(len(list)):
         temp = ""
         for j in range(len(list[i].kategorier)):
-            temp +=F"{list[i].kategorier[j].ID};{list[i].kategorier[j].Tittel};{list[i].kategorier[j].prioritet};"
-        temp += F",{list[i].Sted.id};{list[i].Sted.Tittel};{list[i].Sted.gateadresse};{list[i].Sted.postnr};{list[i].Sted.poststed};,"       
+            temp +=F"{list[i].kategorier[j].ID};{list[i].kategorier[j].Tittel};{list[i].kategorier[j].prioritet};,"
+        temp += F"{list[i].Sted.id};{list[i].Sted.Tittel};{list[i].Sted.gateadresse};{list[i].Sted.postnr};{list[i].Sted.poststed};,"       
         temp += F"{list[i].Tittel};{list[i].Starttidspunkt};{list[i].Varighet} \n"
         doc.write(temp)
     doc.close()
 
 # Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
-def lese_fil_avtaler(list):
+def lese_fil_avtaler(liste):
     while True:
         try:
             doc = open(input("Skriv inn fil navn: "), "r", encoding="UTF-8")
@@ -51,8 +51,19 @@ def lese_fil_avtaler(list):
             for i in doc:
                 try:
                     print(i)
-                    data_split = i.split(";")
-                    list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+                    temp_list = list()
+                    data_split = i.strip().split(",")
+                    x = int(len(data_split))
+                    for j in range(x-2):
+                        temp = data_split[j].strip().split(";")
+                        _temp = klasser.Kategori(temp[0],temp[1], temp[2])
+                        temp_list.append(_temp)
+                    _temp = data_split[x-2]
+                    temp_sted = _temp.strip().split(";")
+                    _sted = klasser.Sted(temp_sted[0],temp_sted[1],temp_sted[2], temp_sted[3],temp_sted[4])
+                    _temp = data_split[x-1]
+                    temp_avtale = _temp.strip().split(";")
+                    liste.append(klasser.avtale(temp_avtale[0], _sted, datetime.fromisoformat(temp_avtale[1]), temp_avtale[2]))
                 except:
                     pass
                 print("Blir lagra i lista")
@@ -130,6 +141,7 @@ if __name__ == "__main__":
     liste.append(klasser.avtale("test2",Sted[0],dato1,20))
     liste.append(klasser.avtale("Test",Sted[0],dato2,30))
     liste[0].legg_til_kategori(kategorier[0])
+    liste[1].legg_til_kategori(kategorier[0])
 
     #Funksjoner.lese_fil_avtaler(liste)
 
@@ -138,3 +150,4 @@ if __name__ == "__main__":
 
     #Funksjoner.utskrift_avtaler(liste)
     Funksjoner.lage_fil_avtaler(liste)
+    Funksjoner.lese_fil_avtaler(liste)
