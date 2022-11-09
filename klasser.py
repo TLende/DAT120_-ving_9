@@ -1,18 +1,30 @@
 from datetime import datetime
 import Funksjoner
+import Oving_10
+import klasser
 
 class avtale:
-    def __init__(self, tittel ="", sted ="",starttidspunkt = datetime.now(), varighet=0):
+    def __init__(self, tittel ="", sted = "",starttidspunkt = datetime.now(), varighet=0):
         try:
             self.Tittel = str(tittel)
-            self.Sted = str(sted)
+            self.Sted = sted
             self.Starttidspunkt = starttidspunkt
             self.Varighet = int(varighet)
+            self.kategorier = list()
         except ValueError:
             print("Ikke gyldig data, prøv igjen")
 
     def __str__(self):
-        return f"Avtale:{self.Tittel}, Sted:{self.Sted}, Tid:{self.Starttidspunkt}, og varer:{self.Varighet} min"
+        return f"Avtale:{self.Tittel}, Sted:{self.Sted}, Tid:{self.Starttidspunkt}, og varer:{self.Varighet} min. Avtalen har kategoriene: {self.kategorierString()}"
+
+    def kategorierString(self):
+        result = ""
+        for kategori in self.kategorier:
+            result = result + f" navn: {kategori.Tittel} id: {kategori.ID}"
+        return result
+
+    def legg_til_kategori(self, kategori):
+        self.kategorier.append(kategori)
         
         #Lager klasse "Kategori"
 class Kategori:

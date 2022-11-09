@@ -1,12 +1,13 @@
 import klasser
 import Funksjoner
+import Oving_10
 
 from datetime import datetime
 
 # Lager ny avtale
 def ny_avtale(list):
     temp_tittel = input("Hva er navnet på avtalen?")
-    temp_sted = input("Hva er stedet til avtalen?")
+    temp_sted = Oving_10.nyttsted()
     temp_starttidspunkt = ""
     while temp_starttidspunkt == "":
         try:
@@ -24,17 +25,21 @@ def ny_avtale(list):
     list.append(klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet))
 
 # Skriver ut avtaler i ei liste
-def utskrift_klasser(list):
+def utskrift_avtaler(list):
     print("Skriver ut alle avtalene i lista:")
     for i in range(len(list)):
         print(i, list[i].Tittel, list[i])
 
-# Lager en fil med formatet: Tittel;Sted;Starttidspunkt;Varighet
+# Lager en fil
 def lage_fil_avtaler(list):
     doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
     for i in range(len(list)):
-        temp_str = F"{list[i].Tittel};{list[i].Sted};{list[i].Starttidspunkt};{list[i].Varighet} \n"
-        doc.write(temp_str)
+        temp = ""
+        for j in range(len(list[i].kategorier)):
+            temp +=F"{list[i].kategorier[j].ID};{list[i].kategorier[j].Tittel};{list[i].kategorier[j].prioritet};"
+        temp += F",{list[i].Sted.id};{list[i].Sted.Tittel};{list[i].Sted.gateadresse};{list[i].Sted.postnr};{list[i].Sted.poststed};,"       
+        temp += F"{list[i].Tittel};{list[i].Starttidspunkt};{list[i].Varighet} \n"
+        doc.write(temp)
     doc.close()
 
 # Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
@@ -79,7 +84,7 @@ def slett_avtale(list):
     if len(list) == 0:
         print("Ingen avtaler lokalt")
     else:
-        utskrift_klasser(list)
+        utskrift_avtaler(list)
         while True:
             try:
                 list.pop(int(input("Skriv inn tallet til avtalen som skal slettes: ")))
@@ -91,7 +96,7 @@ def rediger_avtale(list):
     if len(list) == 0:
         print("Ingen avtaler å redigere")
     else:
-        utskrift_klasser(list)
+        utskrift_avtaler(list)
         while True:
             tempi = int(input("Skriv inn tallet til avtalen som skal redigeres: "))
             try:
@@ -112,19 +117,24 @@ def rediger_avtale_element(x, list):
 
 #test av funksjoner
 if __name__ == "__main__":
-    list = list()
+    liste = list()
+    kategorier = list()
+    Sted = list()
+
     dato1 = datetime(2022,1,1,12,0)
     dato2 = datetime(2022,2,1,12,0)
     tittel = "test"
+    kategorier.append(klasser.Kategori(1, "UiS", 1))
+    Sted.append(klasser.Sted(1, "UiS", 6, 4360, "Varhaug"))
 
-    list.append(klasser.avtale("test2","uis",dato1,20))
-    list.append(klasser.avtale("Test","Test2",dato2,30))
-    
-    Funksjoner.lese_fil_avtaler(list)
+    liste.append(klasser.avtale("test2",Sted[0],dato1,20))
+    liste.append(klasser.avtale("Test",Sted[0],dato2,30))
+    liste[0].legg_til_kategori(kategorier[0])
 
-    print(Funksjoner.avtale_dato(dato1, list))
-    print(Funksjoner.avtale_tittel(tittel, list))
+    #Funksjoner.lese_fil_avtaler(liste)
 
+    #print(Funksjoner.avtale_dato(dato1, liste))
+    #print(Funksjoner.avtale_tittel(tittel, liste))
 
-    Funksjoner.utskrift_klasser(list)
-    Funksjoner.lage_fil_avtaler(list)
+    #Funksjoner.utskrift_avtaler(liste)
+    Funksjoner.lage_fil_avtaler(liste)
