@@ -24,7 +24,7 @@ def ny_avtale(list):
     list.append(klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet))
 
 # Skriver ut avtaler i ei liste
-def utskrift_avtaler(list):
+def utskrift_klasser(list):
     print("Skriver ut alle avtalene i lista:")
     for i in range(len(list)):
         print(i, list[i].Tittel, list[i])
@@ -79,7 +79,7 @@ def slett_avtale(list):
     if len(list) == 0:
         print("Ingen avtaler lokalt")
     else:
-        utskrift_avtaler(list)
+        utskrift_klasser(list)
         while True:
             try:
                 list.pop(int(input("Skriv inn tallet til avtalen som skal slettes: ")))
@@ -91,7 +91,7 @@ def rediger_avtale(list):
     if len(list) == 0:
         print("Ingen avtaler å redigere")
     else:
-        utskrift_avtaler(list)
+        utskrift_klasser(list)
         while True:
             tempi = int(input("Skriv inn tallet til avtalen som skal redigeres: "))
             try:
@@ -170,5 +170,6 @@ if __name__ == "__main__":
     print(Funksjoner.avtale_dato(dato1, list))
     print(Funksjoner.avtale_tittel(tittel, list))
 
-    Funksjoner.utskrift_avtaler(list)
+
+    Funksjoner.utskrift_klasser(list)
     Funksjoner.lage_fil_avtaler(list)
