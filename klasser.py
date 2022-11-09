@@ -13,6 +13,20 @@ class avtale:
 
     def __str__(self):
         return f"Avtale:{self.Tittel}, Sted:{self.Sted}, Tid:{self.Starttidspunkt}, og varer:{self.Varighet} min"
+        
+        #Lager klasse "Kategori"
+class Kategori:
+    def __init__(self, ID="", navn="", prioritet=1):
+        try:
+            self.ID = str(ID)
+            self.Tittel = str(navn)
+            self.prioritet = str(prioritet)
+        except ValueError:
+            print ("Ikke gyldig, prøv igjen")
+        
+    def __str__(self):
+        return f"Navn:{self.Tittel}, ID:{self.ID}, Prioritet:{self.prioritet}"
+
 class Sted:
     def __init__(self, ID, navn, gateadresse, postnr, poststed ):
         self.id = ID
@@ -23,3 +37,4 @@ class Sted:
 
     def __str__(self):
         return f"ID: {self.id}, Navn: {self.Tittel}, Gateadresse: {self.gateadresse}, Postnr: {self.postnr}, Poststed: {self.poststed}"
+
