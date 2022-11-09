@@ -3,7 +3,9 @@ import klasser
 from datetime import datetime
 
 date = datetime.now()
-liste = list()
+liste_avtaler = list()
+liste_kategorier = list()
+liste_steder = list()
 
 #liste.append(klasser.avtale("Skule","uis",datetime.now(),20))
 #liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
@@ -23,7 +25,7 @@ if __name__ == "__main__":
             Funksjoner.lese_fil_avtaler,
             Funksjoner.lage_fil_avtaler,
             Funksjoner.ny_avtale,
-            Funksjoner.utskrift_avtaler,
+            Funksjoner.utskrift_klasser,
             Funksjoner.slett_avtale,
             Funksjoner.rediger_avtale,
             quit
@@ -37,7 +39,7 @@ if __name__ == "__main__":
                 menyv[int(tempi)-1]()
                 break
             except TypeError:
-                menyv[int(tempi)-1](liste)
+                menyv[int(tempi)-1](liste_avtaler)
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igjen")
