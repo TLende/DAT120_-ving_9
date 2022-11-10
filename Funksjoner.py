@@ -1,12 +1,23 @@
 import klasser
 import Funksjoner
+import Oving_10
 
 from datetime import datetime
 
 # Lager ny avtale
-def ny_avtale(list):
+def ny_avtale(list, sted_liste):
     temp_tittel = input("Hva er navnet på avtalen?")
-    temp_sted = input("Hva er stedet til avtalen?")
+    x = input("Vil du velge et sted fra sted lista? y/n:")
+    if x == "y" and len(sted_liste) != 0:
+        print("Velg mellom disse:")
+        for i in range(len(sted_liste)):
+            print(F"{i}: {sted_liste[i]}")
+        Index = int(input("Velg sted:"))
+        temp_sted = sted_liste[Index]
+    else:
+        print("Legg til sted manuelt")
+        temp_sted = klasser.Sted(input("Hva er ID:"),input("Hva er stedsnavnet:"))
+        sted_liste.append(temp_sted)
     temp_starttidspunkt = ""
     while temp_starttidspunkt == "":
         try:
@@ -25,20 +36,24 @@ def ny_avtale(list):
 
 # Skriver ut avtaler i ei liste
 def utskrift_klasser(list):
-    print("Skriver ut alle avtalene i lista:")
+    print("Skriver ut alle objektene i lista:")
     for i in range(len(list)):
         print(i, list[i].Tittel, list[i])
 
-# Lager en fil med formatet: Tittel;Sted;Starttidspunkt;Varighet
+# Lager en fil
 def lage_fil_avtaler(list):
     doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
     for i in range(len(list)):
-        temp_str = F"{list[i].Tittel};{list[i].Sted};{list[i].Starttidspunkt};{list[i].Varighet} \n"
-        doc.write(temp_str)
+        temp = ""
+        for j in range(len(list[i].kategorier)):
+            temp +=F"{list[i].kategorier[j].ID};{list[i].kategorier[j].Tittel};{list[i].kategorier[j].prioritet},"
+        temp += F"{list[i].Sted.id};{list[i].Sted.Tittel};{list[i].Sted.gateadresse};{list[i].Sted.postnr};{list[i].Sted.poststed},"       
+        temp += F"{list[i].Tittel};{list[i].Starttidspunkt};{list[i].Varighet} \n"
+        doc.write(temp)
     doc.close()
 
 # Leser in fil med formatet: Tittel;Sted;Starttidspunkt;Varighet og lagrer i liste
-def lese_fil_avtaler(list):
+def lese_fil_avtaler(liste):
     while True:
         try:
             doc = open(input("Skriv inn fil navn: "), "r", encoding="UTF-8")
@@ -46,11 +61,25 @@ def lese_fil_avtaler(list):
             for i in doc:
                 try:
                     print(i)
-                    data_split = i.split(";")
-                    list.append(klasser.avtale(data_split[0], data_split[1], datetime.fromisoformat(data_split[2]), data_split[3]))
+                    temp_list = list()
+                    data_split = i.strip().split(",")
+                    x = int(len(data_split))
+                    for j in range(x-2):
+                        temp = data_split[j].strip().split(";")
+                        _temp = klasser.Kategori(temp[0],temp[1], temp[2])
+                        temp_list.append(_temp)
+                    temp = data_split[x-2]
+                    temp_sted = temp.strip().split(";")
+                    _sted = klasser.Sted(temp_sted[0],temp_sted[1],temp_sted[2], temp_sted[3],temp_sted[4])
+                    temp = data_split[x-1]
+                    temp_avtale = temp.strip().split(";")
+                    temp = klasser.avtale(temp_avtale[0], _sted, datetime.fromisoformat(temp_avtale[1]), temp_avtale[2])
+                    for k in range(len(temp_list)):
+                        temp.legg_til_kategori(temp_list[k])
+                    liste.append(temp)
+                    print("Blir lagra i lista")
                 except:
                     pass
-                print("Blir lagra i lista")
             break
         except:
             print("File not found or error")
@@ -157,19 +186,29 @@ def rediger_avtale_element(x, list):
 
 #test av funksjoner
 if __name__ == "__main__":
-    list = list()
+    avtaler = []
+    kategorier = []
+    Sted = []
+
     dato1 = datetime(2022,1,1,12,0)
     dato2 = datetime(2022,2,1,12,0)
     tittel = "test"
+    kategorier.append(klasser.Kategori(1, "UiS", 1))
+    kategorier.append(klasser.Kategori(2,"frisør", 3))
+    Sted.append(klasser.Sted(1, "UiS", 6, 4360, "Varhaug"))
 
-    list.append(klasser.avtale("test2","uis",dato1,20))
-    list.append(klasser.avtale("Test","Test2",dato2,30))
-    
-    Funksjoner.lese_fil_avtaler(list)
+    #avtaler.append(klasser.avtale("test2",Sted[0],dato1,20))
+    avtaler.append(klasser.avtale("Test",Sted[0],dato2,30))
+    avtaler[0].legg_til_kategori(kategorier[0])
+    avtaler[0].legg_til_kategori(kategorier[1])
 
-    print(Funksjoner.avtale_dato(dato1, list))
-    print(Funksjoner.avtale_tittel(tittel, list))
+    Funksjoner.ny_avtale(avtaler, Sted)
 
+    #Funksjoner.lese_fil_avtaler(liste)
 
-    Funksjoner.utskrift_klasser(list)
-    Funksjoner.lage_fil_avtaler(list)
+    #print(Funksjoner.avtale_dato(dato1, liste))
+    #print(Funksjoner.avtale_tittel(tittel, liste))
+
+    #Funksjoner.utskrift_avtaler(liste)
+    #Funksjoner.lage_fil_avtaler(avtaler)
+    #Funksjoner.lese_fil_avtaler(avtaler)

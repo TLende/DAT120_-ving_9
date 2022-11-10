@@ -17,18 +17,40 @@ def ny_kategori():
     
     return klasser.Kategori(kategori_navn, kategori_id, kategori_prioritet)
     
-#Lager en fil "Navn; id; Prioritet"
-def lage_fil_kategori(list):
-    doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
-    for i in range(len(list)):
-        kategori_str = F"{list[i].Tittel};{list[i].ID};{list[i].prioritet}\n"
-        doc.write(kategori_str)
-    doc.close()
+#Leser en fil "Navn; id; Prioritet", og lagrer  i liste
+def lese_fil_kategori(list):
+    try:
+        doc = open(input("Skriv inn fil navn:"), "r", encoding="UTF-8")
+        print("Her er kategoriene i fila:")
+        for i in doc:
+            try:
+                print(i)
+                data_split = i.strip().split(";")
+                list.append(klasser.Kategori(data_split[0], data_split[1], data_split[2]))
+            except:
+                pass
+    except:
+        print("File not found.")
 
+#Leser en fil "id;navn;gateadresse;postnr;poststed", og lagrer i liste
+def lese_fil_sted(list):
+    try:
+        doc = open(input("Skriv inn fil navn:"), "r", encoding="UTF-8")
+        print("Her er steda i fila:")
+        for i in doc:
+            try:
+                print(i)
+                data_split = i.strip().split(";")
+                list.append(klasser.Sted(data_split[0], data_split[1], data_split[2], data_split[3], data_split[4]))
+            except:
+                pass
+    except:
+        print("File not found.")
 
-def lage_stedliste(list):
-    doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
-    for i in range(len(list)):
-        temp_str = F"{list[i].ID};{list[i].Tittel};{list[i].gateadresse};{list[i].postnr};{list[i].poststed} \n"
-        doc.write(temp_str)
-    doc.close()
+if __name__ == "__main__":
+    kategorier = []
+
+    lese_fil_sted(kategorier)
+
+    for i in range(len(kategorier)):
+        print(kategorier[i])

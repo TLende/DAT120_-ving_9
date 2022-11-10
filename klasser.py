@@ -1,29 +1,39 @@
 from datetime import datetime
 from logging import exception
 import Funksjoner
+import Oving_10
+import klasser
 
 class avtale:
-    def __init__(self, tittel ="", sted ="",starttidspunkt = datetime.now(), varighet=0):
+    def __init__(self, tittel ="", sted = "",starttidspunkt = datetime.now(), varighet=0):
         try:
             self.Tittel = str(tittel)
-            self.Sted = str(sted)
+            self.Sted = sted
             self.Starttidspunkt = starttidspunkt
             self.Varighet = int(varighet)
+            self.kategorier = []
         except ValueError:
             print("Ikke gyldig data, prøv igjen")
 
     def __str__(self):
-        return f"Avtale:{self.Tittel}, Sted:{self.Sted}, Tid:{self.Starttidspunkt}, og varer:{self.Varighet} min"
+        return f"Avtale:{self.Tittel}, Sted:{self.Sted}, Tid:{self.Starttidspunkt}, og varer:{self.Varighet} min. Avtalen har kategoriene: {self.kategorierString()}"
 
-class brekreft(Exception): pass
+    def kategorierString(self):
+        result = ""
+        for kategori in self.kategorier:
+            result = result + f" navn: {kategori.Tittel} id: {kategori.ID}"
+        return result
+
+    def legg_til_kategori(self, kategori):
+        self.kategorier.append(kategori)
         
         #Lager klasse "Kategori"
 class Kategori:
-    def __init__(self, ID="", navn="", prioritet=1):
+    def __init__(self, ID=0, navn="", prioritet=1):
         try:
-            self.ID = str(ID)
+            self.ID = int(ID)
             self.Tittel = str(navn)
-            self.prioritet = str(prioritet)
+            self.prioritet = int(prioritet)
         except ValueError:
             print ("Ikke gyldig, prøv igjen")
         
@@ -31,13 +41,17 @@ class Kategori:
         return f"Navn:{self.Tittel}, ID:{self.ID}, Prioritet:{self.prioritet}"
 
 class Sted:
-    def __init__(self, ID, navn, gateadresse, postnr, poststed ):
-        self.id = ID
-        self.Tittel = navn
-        self.gateadresse = gateadresse
-        self.postnr = postnr
-        self.poststed = poststed
+    def __init__(self, ID=0, navn="", gateadresse=0, postnr=0, poststed=""):
+        try:
+            self.id = int(ID)
+            self.Tittel = str(navn)
+            self.gateadresse = int(gateadresse)
+            self.postnr = int(postnr)
+            self.poststed = str(poststed)
+        except ValueError:
+            print("Ikke gyldig, prøv igjen")
 
     def __str__(self):
         return f"ID: {self.id}, Navn: {self.Tittel}, Gateadresse: {self.gateadresse}, Postnr: {self.postnr}, Poststed: {self.poststed}"
 
+class brekreft(Exception): pass
