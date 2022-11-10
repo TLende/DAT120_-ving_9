@@ -30,9 +30,9 @@ class avtale:
 class Kategori:
     def __init__(self, ID="", navn="", prioritet=1):
         try:
-            self.ID = str(ID)
+            self.ID = int(ID)
             self.Tittel = str(navn)
-            self.prioritet = str(prioritet)
+            self.prioritet = int(prioritet)
         except ValueError:
             print ("Ikke gyldig, prøv igjen")
         
@@ -41,11 +41,14 @@ class Kategori:
 
 class Sted:
     def __init__(self, ID, navn, gateadresse, postnr, poststed ):
-        self.id = ID
-        self.Tittel = navn
-        self.gateadresse = gateadresse
-        self.postnr = postnr
-        self.poststed = poststed
+        try:
+            self.id = int(ID)
+            self.Tittel = str(navn)
+            self.gateadresse = int(gateadresse)
+            self.postnr = int(postnr)
+            self.poststed = str(poststed)
+        except ValueError:
+            print("Ikke gyldig, prøv igjen")
 
     def __str__(self):
         return f"ID: {self.id}, Navn: {self.Tittel}, Gateadresse: {self.gateadresse}, Postnr: {self.postnr}, Poststed: {self.poststed}"

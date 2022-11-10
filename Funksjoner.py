@@ -36,8 +36,8 @@ def lage_fil_avtaler(list):
     for i in range(len(list)):
         temp = ""
         for j in range(len(list[i].kategorier)):
-            temp +=F"{list[i].kategorier[j].ID};{list[i].kategorier[j].Tittel};{list[i].kategorier[j].prioritet};,"
-        temp += F"{list[i].Sted.id};{list[i].Sted.Tittel};{list[i].Sted.gateadresse};{list[i].Sted.postnr};{list[i].Sted.poststed};,"       
+            temp +=F"{list[i].kategorier[j].ID};{list[i].kategorier[j].Tittel};{list[i].kategorier[j].prioritet},"
+        temp += F"{list[i].Sted.id};{list[i].Sted.Tittel};{list[i].Sted.gateadresse};{list[i].Sted.postnr};{list[i].Sted.poststed},"       
         temp += F"{list[i].Tittel};{list[i].Starttidspunkt};{list[i].Varighet} \n"
         doc.write(temp)
     doc.close()
@@ -58,15 +58,18 @@ def lese_fil_avtaler(liste):
                         temp = data_split[j].strip().split(";")
                         _temp = klasser.Kategori(temp[0],temp[1], temp[2])
                         temp_list.append(_temp)
-                    _temp = data_split[x-2]
-                    temp_sted = _temp.strip().split(";")
+                    temp = data_split[x-2]
+                    temp_sted = temp.strip().split(";")
                     _sted = klasser.Sted(temp_sted[0],temp_sted[1],temp_sted[2], temp_sted[3],temp_sted[4])
-                    _temp = data_split[x-1]
-                    temp_avtale = _temp.strip().split(";")
-                    liste.append(klasser.avtale(temp_avtale[0], _sted, datetime.fromisoformat(temp_avtale[1]), temp_avtale[2]))
+                    temp = data_split[x-1]
+                    temp_avtale = temp.strip().split(";")
+                    temp = klasser.avtale(temp_avtale[0], _sted, datetime.fromisoformat(temp_avtale[1]), temp_avtale[2])
+                    for k in range(len(temp_list)):
+                        temp.legg_til_kategori(temp_list[k])
+                    liste.append(temp)
+                    print("Blir lagra i lista")
                 except:
                     pass
-                print("Blir lagra i lista")
             break
         except:
             print("File not found or error")
@@ -128,7 +131,7 @@ def rediger_avtale_element(x, list):
 
 #test av funksjoner
 if __name__ == "__main__":
-    liste = list()
+    avtaler = list()
     kategorier = list()
     Sted = list()
 
@@ -136,12 +139,13 @@ if __name__ == "__main__":
     dato2 = datetime(2022,2,1,12,0)
     tittel = "test"
     kategorier.append(klasser.Kategori(1, "UiS", 1))
+    kategorier.append(klasser.Kategori(2,"frisør", 3))
     Sted.append(klasser.Sted(1, "UiS", 6, 4360, "Varhaug"))
 
-    liste.append(klasser.avtale("test2",Sted[0],dato1,20))
-    liste.append(klasser.avtale("Test",Sted[0],dato2,30))
-    liste[0].legg_til_kategori(kategorier[0])
-    liste[1].legg_til_kategori(kategorier[0])
+    #avtaler.append(klasser.avtale("test2",Sted[0],dato1,20))
+    avtaler.append(klasser.avtale("Test",Sted[0],dato2,30))
+    avtaler[0].legg_til_kategori(kategorier[0])
+    avtaler[0].legg_til_kategori(kategorier[1])
 
     #Funksjoner.lese_fil_avtaler(liste)
 
@@ -149,5 +153,5 @@ if __name__ == "__main__":
     #print(Funksjoner.avtale_tittel(tittel, liste))
 
     #Funksjoner.utskrift_avtaler(liste)
-    Funksjoner.lage_fil_avtaler(liste)
-    Funksjoner.lese_fil_avtaler(liste)
+    Funksjoner.lage_fil_avtaler(avtaler)
+    Funksjoner.lese_fil_avtaler(avtaler)
