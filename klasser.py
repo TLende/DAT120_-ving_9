@@ -28,7 +28,7 @@ class avtale:
         
         #Lager klasse "Kategori"
 class Kategori:
-    def __init__(self, ID="", navn="", prioritet=1):
+    def __init__(self, ID=0, navn="", prioritet=1):
         try:
             self.ID = int(ID)
             self.Tittel = str(navn)
@@ -40,7 +40,7 @@ class Kategori:
         return f"Navn:{self.Tittel}, ID:{self.ID}, Prioritet:{self.prioritet}"
 
 class Sted:
-    def __init__(self, ID, navn, gateadresse, postnr, poststed ):
+    def __init__(self, ID=0, navn="", gateadresse=0, postnr=0, poststed=""):
         try:
             self.id = int(ID)
             self.Tittel = str(navn)
