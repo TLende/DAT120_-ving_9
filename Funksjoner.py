@@ -17,6 +17,7 @@ def ny_avtale(list, sted_liste):
     else:
         print("Legg til sted manuelt")
         temp_sted = klasser.Sted(input("Hva er ID:"),input("Hva er stedsnavnet:"))
+        sted_liste.append(temp_sted)
     temp_starttidspunkt = ""
     while temp_starttidspunkt == "":
         try:
