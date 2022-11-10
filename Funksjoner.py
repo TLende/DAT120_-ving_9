@@ -75,7 +75,7 @@ def avtale_tittel(streng, list):
             return_str += F"{list[i].Tittel}:{list[i].Starttidspunkt} \n"
     return return_str
 
-def slett_avtale(list):
+def slett_fra_lite(list):
     if len(list) == 0:
         print("Ingen avtaler lokalt")
     else:
