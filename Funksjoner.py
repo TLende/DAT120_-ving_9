@@ -5,9 +5,18 @@ import Oving_10
 from datetime import datetime
 
 # Lager ny avtale
-def ny_avtale(list):
+def ny_avtale(list, sted_liste):
     temp_tittel = input("Hva er navnet på avtalen?")
-    temp_sted = Oving_10.nyttsted()
+    x = input("Vil du velge et sted fra sted lista? y/n:")
+    if x == "y" and len(sted_liste) != 0:
+        print("Velg mellom disse:")
+        for i in range(len(sted_liste)):
+            print(F"{i}: {sted_liste[i]}")
+        Index = int(input("Velg sted:"))
+        temp_sted = sted_liste[Index]
+    else:
+        print("Legg til sted manuelt")
+        temp_sted = klasser.Sted(input("Hva er ID:"),input("Hva er stedsnavnet:"))
     temp_starttidspunkt = ""
     while temp_starttidspunkt == "":
         try:
@@ -25,8 +34,8 @@ def ny_avtale(list):
     list.append(klasser.avtale(temp_tittel, temp_sted, temp_starttidspunkt, temp_varighet))
 
 # Skriver ut avtaler i ei liste
-def utskrift_avtaler(list):
-    print("Skriver ut alle avtalene i lista:")
+def utskrift_klasser(list):
+    print("Skriver ut alle objektene i lista:")
     for i in range(len(list)):
         print(i, list[i].Tittel, list[i])
 
@@ -98,7 +107,7 @@ def slett_avtale(list):
     if len(list) == 0:
         print("Ingen avtaler lokalt")
     else:
-        utskrift_avtaler(list)
+        utskrift_klasser(list)
         while True:
             try:
                 list.pop(int(input("Skriv inn tallet til avtalen som skal slettes: ")))
@@ -110,7 +119,7 @@ def rediger_avtale(list):
     if len(list) == 0:
         print("Ingen avtaler å redigere")
     else:
-        utskrift_avtaler(list)
+        utskrift_klasser(list)
         while True:
             tempi = int(input("Skriv inn tallet til avtalen som skal redigeres: "))
             try:
@@ -131,9 +140,9 @@ def rediger_avtale_element(x, list):
 
 #test av funksjoner
 if __name__ == "__main__":
-    avtaler = list()
-    kategorier = list()
-    Sted = list()
+    avtaler = []
+    kategorier = []
+    Sted = []
 
     dato1 = datetime(2022,1,1,12,0)
     dato2 = datetime(2022,2,1,12,0)
@@ -147,11 +156,13 @@ if __name__ == "__main__":
     avtaler[0].legg_til_kategori(kategorier[0])
     avtaler[0].legg_til_kategori(kategorier[1])
 
+    Funksjoner.ny_avtale(avtaler, Sted)
+
     #Funksjoner.lese_fil_avtaler(liste)
 
     #print(Funksjoner.avtale_dato(dato1, liste))
     #print(Funksjoner.avtale_tittel(tittel, liste))
 
     #Funksjoner.utskrift_avtaler(liste)
-    Funksjoner.lage_fil_avtaler(avtaler)
-    Funksjoner.lese_fil_avtaler(avtaler)
+    #Funksjoner.lage_fil_avtaler(avtaler)
+    #Funksjoner.lese_fil_avtaler(avtaler)

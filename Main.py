@@ -3,9 +3,9 @@ import klasser
 from datetime import datetime
 
 date = datetime.now()
-liste_avtaler = list()
-liste_kategorier = list()
-liste_steder = list()
+liste_avtaler = []
+liste_kategorier = []
+liste_steder = []
 
 #liste.append(klasser.avtale("Skule","uis",datetime.now(),20))
 #liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
