@@ -1,14 +1,6 @@
 import Funksjoner
 import klasser
+import Oving_10
 from datetime import datetime
 
-class test(object):
-    def __init__(self,g,h):
-        self.tittel = g
-        self.verdi = h
-
-    def __str__(self):
-        return self.tittel
-
-lot = test
-print(vars(test()))
+print(Oving_10.lese_fil)
