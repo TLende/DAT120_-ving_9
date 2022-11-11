@@ -3,8 +3,8 @@ import klasser
 from datetime import datetime
 
 class test(object):
-    def __init__(self,tittel,verdi):
-        self.tittel = tittel
-        self.verdi = verdi
+    def __init__(self):
+        self.tittel = 1
+        self.verdi = 2
 
 print(test(1,2))
