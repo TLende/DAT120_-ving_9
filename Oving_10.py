@@ -32,3 +32,15 @@ def lage_stedliste(list):
         temp_str = F"{list[i].ID};{list[i].Tittel};{list[i].gateadresse};{list[i].postnr};{list[i].poststed} \n"
         doc.write(temp_str)
     doc.close()
+
+def lese_fil(list,variabel):
+    if variabel == "Avtale":
+        tvariabel = type(klasser.avtale())
+    elif variabel == "Sted":
+        tvariabel = type(klasser.Sted())
+    elif variabel == "Kategori":
+        tvariabel = type(klasser.Kategori())
+    print(tvariabel)
+    
+
+

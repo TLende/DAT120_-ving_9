@@ -11,4 +11,4 @@ class test(object):
         return self.tittel
 
 lot = test
-print(type(test("3","lot")))
+print(vars(test()))
