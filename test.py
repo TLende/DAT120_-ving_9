@@ -7,4 +7,8 @@ class test(object):
         self.tittel = 1
         self.verdi = 2
 
+    def __str__(self):
+        return self.tittel
+
+lot = test
 print(test())
