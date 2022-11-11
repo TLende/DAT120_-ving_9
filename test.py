@@ -7,4 +7,4 @@ class test(object):
         self.tittel = 1
         self.verdi = 2
 
-print(test(1,2))
+print(test())
