@@ -3,12 +3,12 @@ import klasser
 from datetime import datetime
 
 class test(object):
-    def __init__(self):
-        self.tittel = 1
-        self.verdi = 2
+    def __init__(self,g,h):
+        self.tittel = g
+        self.verdi = h
 
     def __str__(self):
         return self.tittel
 
 lot = test
-print(test())
+print(type(test("3","lot")))
