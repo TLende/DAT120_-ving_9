@@ -33,17 +33,8 @@ def lage_stedliste(list):
         doc.write(temp_str)
     doc.close()
 
-def lese_fil(liste,variabel):
-    lvariabel = list()
-    if variabel == "Avtale":
-        tvariabel = vars(klasser.avtale())
-    elif variabel == "Sted":
-        tvariabel = vars(klasser.Sted())
-    elif variabel == "Kategori":
-        tvariabel = vars(klasser.Kategori())
-    lvariabel = str(tvariabel).split(',')
-    for x in lvariabel:
-        print(lvariabel[x])
+
+    
     
 
 
