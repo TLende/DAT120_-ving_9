@@ -1,5 +1,6 @@
 import Funksjoner
 import klasser
+import meny
 from datetime import datetime
 
 date = datetime.now()
@@ -13,28 +14,22 @@ liste_steder = []
 if __name__ == "__main__":
     while True:
         menyl = [
-            "   [1]Les avtaler fra fil",
-            "   [2]Skriv avtaler til fil",
-            "   [3]Skriv inn ny avtale",
-            "   [4]Skriv ut alle avtaler",
-            "   [5]Slett en avtale",
-            "   [6]Rediger avtale",
+            "   [1]Avtaler,
+            "   [2]Sted",
+            "   [3]Kategori",
             "   [7]Avslutt"
         ]
         menyv = [
-            Funksjoner.lese_fil_avtaler,
-            Funksjoner.lage_fil_avtaler,
-            Funksjoner.ny_avtale,
-            Funksjoner.utskrift_klasser,
-            Funksjoner.slett_avtale,
-            Funksjoner.rediger_avtale,
+            meny.menycommon("Avtaler",liste_avtaler),
+            meny.menycommon("Sted",liste_steder),
+            meny.menycommon("Kategori",liste_kategorier),
             quit
         ]
         print("Valgene er")
         for x in range(len(menyl)):
             print(menyl[x],end='\n')
         while True:
-            tempi = input("Skriv inn valget her 1-7: ")
+            tempi = input(f"Skriv inn valget her 1-{len(menyl)}: ")
             try:
                 menyv[int(tempi)-1]()
                 break
