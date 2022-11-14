@@ -26,4 +26,16 @@ if __name__ == "__main__":
             meny.menycommon("Kategori",liste_kategorier),
             quit
         ]
-        print(test)
+        print("Valgene er")
+        for x in range(len(menyl)):
+            print(menyl[x],end='\n')
+        while True:
+            tempi = input(f"Skriv inn valget her 1-{len(menyl)}: ")
+            try:
+                menyv[int(tempi)-1]()
+                break
+            except TypeError:
+                menyv[int(tempi)-1](liste_avtaler)
+                break
+            except ValueError:
+                print("Ikke gyldig verdi prøv igjen")
