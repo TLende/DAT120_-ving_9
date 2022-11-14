@@ -1,12 +1,12 @@
 import Funksjoner
 import Oving_10
 
-def menycommon(type,list):
+def menycommon(type,list,sted_liste):
     while True:
         menyc = [
+            f"Skriv inn ny {type}",
             f"Les {type} fra fil",
             f"Skriv {type} til fil",
-            f"Skriv inn ny {type}",
             f"Skriv ut alle {type}",
             f"Slett {type}",
             f"Rediger {type}",

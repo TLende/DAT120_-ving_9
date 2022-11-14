@@ -23,7 +23,7 @@ if __name__ == "__main__":
             "   [3]Kategori",
             "   [4]Avslutt"
         ]
-        print("Valgene er")
+        print("Valgene er:")
         for x in range(len(menyl)):
             print(menyl[x])
         while True:
@@ -32,9 +32,6 @@ if __name__ == "__main__":
                 if tempi == 4:
                     quit
                 meny.menycommon(list1[tempi-1],list2[tempi-1])
-                break
-            except TypeError:
-                menyv[int(tempi)-1](liste_avtaler)
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igjen")
