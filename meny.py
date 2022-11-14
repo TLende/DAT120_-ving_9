@@ -40,11 +40,11 @@ def menycommon(type,list):
             if type == menyv[x]:
                 tmeny = x
         for x in range(len(meny[tmeny])):
-            print(f"[{x+1}]{menyc[x]}")
+            print(f"    [{x+1}]{menyc[x]}")
             if x == len(meny[tmeny])-1:
-                print(f"[{x+2}]Bekreft")
+                print(f"    [{x+2}]Bekreft")
         while True:
-            valg = input(f"Skriv in valget her 1-{len(meny[tmeny])+1}: ")
+            valg = input(f"Skriv in valget her 1-{len(meny[tmeny])+1}: ")-1
             try:
                 meny[tmeny][valg]()
                 break
