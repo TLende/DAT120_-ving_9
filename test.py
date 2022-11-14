@@ -6,6 +6,6 @@ from datetime import datetime
 from meny import menycommon
 
 liste = list()
-test = "Sted"
+test = "Kategori"
 
 menycommon(test)
