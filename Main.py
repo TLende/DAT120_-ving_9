@@ -14,7 +14,7 @@ liste_steder = []
 if __name__ == "__main__":
     while True:
         menyl = [
-            "   [1]Avtaler,
+            "   [1]Avtaler",
             "   [2]Sted",
             "   [3]Kategori",
             "   [7]Avslutt"
