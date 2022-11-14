@@ -1,0 +1,2 @@
+1;UiS;9;4360;Varhaug
+2;Frisør;12;4365;Nærbø
