@@ -46,13 +46,9 @@ def menycommon(type,list):
                 print(f"    [{x+2}]Bekreft")
         while True:
             valg = int(input(f"Skriv in valget her 1-{len(meny[tmeny])+1}: "))-1
-            print(f"{list=}")
             try:
                 if valg == len(meny[tmeny]):
                     quit
-                meny[tmeny][valg]()
-                break
-            except TypeError:
                 meny[tmeny][valg](list)
                 break
             except ValueError:

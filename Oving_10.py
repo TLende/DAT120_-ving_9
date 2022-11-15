@@ -6,16 +6,17 @@ def nyttsted():
 
 
 #Lager ny kategori
-def ny_kategori():
-    try:
-        kategori_navn = input("Hva er navnet på kategorien?")
-        kategori_id = input("Hva er id til kategorien?")
-        kategori_prioritet = int(input("Hvor høy prioritet? Legg inn et tall mellom 1 og 3 der 1 er lite viktig og 3 er svært viktig."))
-        return klasser.Kategori(kategori_id, kategori_navn, kategori_prioritet)
-    except ValueError:
-        print("Ikke gyldig, prøv igjen")
+def ny_kategori(list):
+    while True:
+        try:
+            kategori_navn = input("Hva er navnet på kategorien?")
+            kategori_id = input("Hva er id til kategorien?")
+            kategori_prioritet = int(input("Hvor høy prioritet? Legg inn et tall mellom 1 og 3 der 1 er lite viktig og 3 er svært viktig."))
+            list.append(klasser.Kategori(kategori_id, kategori_navn, kategori_prioritet))
+            break
+        except ValueError:
+            print("Ikke gyldig, prøv igjen")
     
-    return klasser.Kategori(kategori_navn, kategori_id, kategori_prioritet)
     
 #Leser en fil "Navn; id; Prioritet", og lagrer  i liste
 def lese_fil_kategori(list):
