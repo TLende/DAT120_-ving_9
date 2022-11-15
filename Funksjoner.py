@@ -5,7 +5,7 @@ import Oving_10
 from datetime import datetime
 
 # Lager ny avtale
-def ny_avtale(list, sted_liste):
+def ny_avtale(list, sted_liste = []):
     temp_tittel = input("Hva er navnet på avtalen?")
     x = input("Vil du velge et sted fra sted lista? y/n:")
     if x == "y" and len(sted_liste) != 0:
@@ -36,9 +36,12 @@ def ny_avtale(list, sted_liste):
 
 # Skriver ut avtaler i ei liste
 def utskrift_klasser(list):
-    print("Skriver ut alle objektene i lista:")
-    for i in range(len(list)):
-        print(i, list[i].Tittel, list[i])
+    if len(list) == 0:
+        print("Lista er tom")
+    else:
+        print("Skriver ut alle objektene i lista:")
+        for i in range(len(list)):
+            print(i+1, list[i].Tittel, list[i])
 
 # Lager en fil
 def lage_fil_avtaler(list):

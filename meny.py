@@ -2,8 +2,9 @@ import Funksjoner
 import Oving_10
 import klasser
 
-def menycommon(type,list):
-    while True:
+def menycommon(type,list,list_sted):
+    loop = True
+    while loop == True:
         menyc = [
             f"Skriv inn ny {type}",
             f"Les {type} fra fil",
@@ -48,8 +49,12 @@ def menycommon(type,list):
             valg = int(input(f"Skriv in valget her 1-{len(meny[tmeny])+1}: "))-1
             try:
                 if valg == len(meny[tmeny]):
-                    quit
+                    loop = False
+                    break
                 meny[tmeny][valg](list)
+                break
+            except TypeError:
+                meny[tmeny][valg](list,list_sted)
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igen")

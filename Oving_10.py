@@ -1,8 +1,8 @@
 import klasser
 import Funksjoner
 
-def nyttsted():
-    return klasser.Sted(input("StedID:"), input("Sted navn:"), input("gateadresse:"), int(input("postnr:")), input("poststed:"))
+def nyttsted(list):
+    list.append(klasser.Sted(input("StedID:"), input("Sted navn:"), input("gateadresse:"), int(input("postnr:")), input("poststed:")))
 
 
 #Lager ny kategori
