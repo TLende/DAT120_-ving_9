@@ -1,7 +1,8 @@
 import Funksjoner
 import Oving_10
+import klasser
 
-def menycommon(type,list,sted_liste):
+def menycommon(type,list):
     while True:
         menyc = [
             f"Skriv inn ny {type}",
@@ -44,8 +45,11 @@ def menycommon(type,list,sted_liste):
             if x == len(meny[tmeny])-1:
                 print(f"    [{x+2}]Bekreft")
         while True:
-            valg = input(f"Skriv in valget her 1-{len(meny[tmeny])+1}: ")-1
+            valg = int(input(f"Skriv in valget her 1-{len(meny[tmeny])+1}: "))-1
+            print(f"{list=}")
             try:
+                if valg == len(meny[tmeny]):
+                    quit
                 meny[tmeny][valg]()
                 break
             except TypeError:

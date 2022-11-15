@@ -184,6 +184,7 @@ def Rbekreft(list,x):
 def rediger_avtale_element(x, list):
     list[x] = Funksjoner.ny_avtale(list)
 
+
 #test av funksjoner
 if __name__ == "__main__":
     avtaler = []

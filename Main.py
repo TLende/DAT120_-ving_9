@@ -32,6 +32,7 @@ if __name__ == "__main__":
                 if tempi == 4:
                     quit
                 meny.menycommon(list1[tempi-1],list2[tempi-1])
+                
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igjen")
