@@ -190,6 +190,8 @@ def rediger_avtale_element(x, list):
 def legg_til_kategori(list,list_kategori):
     utskrift_klasser(list)
     if len(list) != 0:
+        if type(list_kategori) != "kategori":
+            raise kategorierror
         try:
             x = int(input(f"Velg ønsket avtale 1-{len(list)}"))
             if 1 <= x >= len(list):
