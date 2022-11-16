@@ -223,6 +223,21 @@ def sted_sok(list,list_sted = list(),liste_test = False):
     else:
         raise klasser.Stederror
 
+def lage_fil_kategori(list):
+    doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
+    for i in range(len(list)):
+        kategori_str = F"{list[i].Tittel};{list[i].ID};{list[i].prioritet}\n"
+        doc.write(kategori_str)
+    doc.close()
+
+
+def lage_stedliste(list):
+    doc = open (input("Skriv inn ønsket navn på fil: "), "w", encoding="UTF-8")
+    for i in range(len(list)):
+        temp_str = F"{list[i].ID};{list[i].Tittel};{list[i].gateadresse};{list[i].postnr};{list[i].poststed} \n"
+        doc.write(temp_str)
+    doc.close()
+
 
 
 #test av funksjoner
