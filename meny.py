@@ -6,7 +6,10 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
     loop = True
     while loop == True:
         list = [list_avtale,list_sted,list_kategori]
-        list1 = ["Avtaler", "Sted", "Kategori"]
+        list1 = ["Avtale", "Sted", "Kategori"]
+        for x in range(len(list)):
+            if list1[x] == type:
+                tlist = x
         menyc = [
             f"Skriv inn ny {type}",
             f"Les {type} fra fil",
@@ -53,12 +56,24 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
             valg = int(input(f"Skriv in valget her 1-{len(meny[tmeny])+1}: "))-1
             try:
                 if valg == len(meny[tmeny]):
+                    print(f"{list_avtale=}")
+                    print(f"{list_sted=}")
+                    print(f"{list_kategori=}")
                     loop = False
                     break
-                meny[tmeny][valg](list)
-                break
+                else:
+                    meny[tmeny][valg](list[tlist])
+                    break
             except TypeError:
-                meny[tmeny][valg](list,list_sted,)
+                try:
+                    meny[tmeny][valg](list[tlist],list_sted)
+                except klasser.kategorierror:
+                    try:
+                        print("her")
+                        meny[tmeny][valg](list[tlist],list_kategori)
+                    except klasser.kategorierror:
+                        print("Lista er tom")
+
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igen")

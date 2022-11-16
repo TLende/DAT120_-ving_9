@@ -29,27 +29,22 @@ class avtale:
         
         #Lager klasse "Kategori"
 class Kategori:
-    def __init__(self, ID=0, navn="", prioritet=1):
-        try:
-            self.ID = int(ID)
-            self.Tittel = str(navn)
-            self.prioritet = int(prioritet)
-        except ValueError:
-            print ("Ikke gyldig, prøv igjen")
+    def __init__(self, ID=0, Tittel="", prioritet=1):
+        self.Tittel = str(Tittel)
+        self.ID = int(ID)
+        self.prioritet = int(prioritet)
         
     def __str__(self):
         return f"Navn:{self.Tittel}, ID:{self.ID}, Prioritet:{self.prioritet}"
 
 class Sted:
     def __init__(self, ID=0, navn="", gateadresse=0, postnr=0, poststed=""):
-        try:
-            self.id = int(ID)
-            self.Tittel = str(navn)
-            self.gateadresse = int(gateadresse)
-            self.postnr = int(postnr)
-            self.poststed = str(poststed)
-        except ValueError:
-            print("Ikke gyldig, prøv igjen")
+        self.id = int(ID)
+        self.Tittel = str(navn)
+        self.gateadresse = int(gateadresse)
+        self.postnr = int(postnr)
+        self.poststed = str(poststed)
+
 
     def __str__(self):
         return f"ID: {self.id}, Navn: {self.Tittel}, Gateadresse: {self.gateadresse}, Postnr: {self.postnr}, Poststed: {self.poststed}"

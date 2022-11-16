@@ -190,21 +190,26 @@ def rediger_avtale_element(x, list):
 def legg_til_kategori(list,list_kategori):
     utskrift_klasser(list)
     if len(list) != 0:
-        if type(list_kategori) != "kategori":
-            raise kategorierror
-        try:
-            x = int(input(f"Velg ønsket avtale 1-{len(list)}"))
-            if 1 <= x >= len(list):
-                try:
-                    utskrift_klasser(list_kategori)
-                    list[x].legg_til_kategori(list_kategori[print(f"Velg kategori 1-{len(list_kategori)}")])
-                except:
-                    print("Ikke gyldig input prøv igjen")
-            else:
-                raise ValueError
-        except:
-            print("Ikke gyldig input prøv igjen")
-
+        if len(list_kategori) != 0:
+            print(type(list_kategori[0]))
+            if type(list_kategori[0]) != "kategori":
+                print("tom")
+                raise klasser.kategorierror
+            try:
+                x = int(input(f"Velg ønsket avtale 1-{len(list)}"))
+                if 1 <= x >= len(list):
+                    try:
+                        utskrift_klasser(list_kategori)
+                        list[x].legg_til_kategori(list_kategori[print(f"Velg kategori 1-{len(list_kategori)}")])
+                    except:
+                        print("Ikke gyldig input prøv igjen")
+                else:
+                    raise ValueError
+            except:
+                print("Ikke gyldig input prøv igjen")
+        else:
+            print("ok")
+            raise klasser.kategorierror
 
 
 
