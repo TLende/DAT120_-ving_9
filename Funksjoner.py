@@ -5,7 +5,9 @@ import Oving_10
 from datetime import datetime
 
 # Lager ny avtale
-def ny_avtale(list, sted_liste = []):
+def ny_avtale(list, sted_liste = [],liste_test = False):
+    if liste_test == False and len(sted_liste) == 0:
+        raise klasser.Stederror
     temp_tittel = input("Hva er navnet på avtalen?")
     x = input("Vil du velge et sted fra sted lista? y/n:")
     if x == "y" and len(sted_liste) != 0:
@@ -114,7 +116,7 @@ def slett_fra_lite(list):
         utskrift_klasser(list)
         while True:
             try:
-                list.pop(int(input("Skriv inn tallet til avtalen som skal slettes: ")))
+                list.pop(int(input("Skriv inn tallet til avtalen som skal slettes: "))-1)
                 break
             except:
                 print("Ikke gyldig input")
@@ -187,18 +189,16 @@ def Rbekreft(list,x):
 def rediger_avtale_element(x, list):
     list[x] = Funksjoner.ny_avtale(list)
 
-def legg_til_kategorier(list,list_kategori):
-    utskrift_klasser(list)
+def legg_til_kategorier(list,list_kategori = list()):
+    
     if len(list) != 0:
         if len(list_kategori) != 0:
-            print(type(list_kategori[0]))
-            if type(list_kategori[0]) != klasser.Kategori:
-                raise klasser.kategorierror
+            utskrift_klasser(list)
             try:
                 x = int(input(f"Velg ønsket avtale 1-{len(list)}: "))-1
-                if 0 <= x > len(list):
+                if x in range(len(list)):
                         utskrift_klasser(list_kategori)
-                        inputet = int(input(f"Velg kategori 1-{len(list_kategori)}"))
+                        inputet = int(input(f"Velg kategori 1-{len(list_kategori)}: "))
                         print(f"Input:{inputet-1} og {range(len(list_kategori))}")
                         list[x].legg_til_kategori(list_kategori[inputet-1])
                 else:
@@ -206,8 +206,23 @@ def legg_til_kategorier(list,list_kategori):
             except klasser.brekreft:
                 print("Ikke gyldig input prøv igjen")
         else:
-            print("ok")
             raise klasser.kategorierror
+
+def sted_sok(list,list_sted = list(),liste_test = False):
+    if len(list_sted) == 0 and liste_test == False:
+        raise klasser.Stederror
+    if len(list_sted) != 0:
+        utskrift_klasser(list_sted)
+        try:
+            imp = int(input(f"Velg Sted 1-{len(list_sted)}: "))-1
+            for x in list:
+                print(list[x].Sted, list_sted[imp])
+                if list[x].Sted == list_sted[imp]:
+                    print(list[x])
+        except:
+            print("Ikke gyldig input")
+    else:
+        raise klasser.Stederror
 
 
 

@@ -17,7 +17,8 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
             f"Skriv ut alle {type}",
             f"Slett {type}",
             f"Rediger {type}",
-            f"Legg til kategori til avtale"
+            f"Legg til kategori til avtale",
+            f"Søk etter avtaler med sted"
         ]
         menya = [
             Funksjoner.ny_avtale,
@@ -26,7 +27,8 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
             Funksjoner.utskrift_klasser,
             Funksjoner.slett_fra_lite,
             Funksjoner.rediger_avtale,
-            Funksjoner.legg_til_kategorier
+            Funksjoner.legg_til_kategorier,
+            Funksjoner.sted_sok
         ]
         menys = [
             Oving_10.nyttsted,
@@ -56,9 +58,6 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
             valg = int(input(f"Skriv in valget her 1-{len(meny[tmeny])+1}: "))-1
             try:
                 if valg == len(meny[tmeny]):
-                    print(f"{list_avtale=}")
-                    print(f"{list_sted=}")
-                    print(f"{list_kategori=}")
                     loop = False
                     break
                 else:

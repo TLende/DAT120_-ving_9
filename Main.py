@@ -25,9 +25,6 @@ if __name__ == "__main__":
             "   [3]Kategori",
             "   [4]Avslutt"
         ]
-        print(f"{liste_avtaler=}")
-        print(f"{liste_steder=}")
-        print(f"{liste_kategorier=}")
         print("Valgene er:")
         for x in range(len(menyl)):
             print(menyl[x])
