@@ -23,7 +23,15 @@ def ny_avtale(list, sted_liste = [],liste_test = False):
     temp_starttidspunkt = ""
     while temp_starttidspunkt == "":
         try:
-            temp_starttidspunkt = datetime(int(input("År:")),int(input("Måned:")),int(input("Dag:")),int(input("Time:")),int(input("Minutt:"))) 
+            if input("Vil du sette tid som nå? y/n: ") == "y".lower:
+                temp_starttidspunkt = datetime.now()
+            else:
+                while True:
+                    try:
+                        temp_starttidspunkt = datetime(int(input("År:")),int(input("Måned:")),int(input("Dag:")),int(input("Time:")),int(input("Minutt:"))) 
+                        break
+                    except ValueError:
+                        print("Ugyldig verdi! Prøv på nytt")
         except ValueError:
             print("Ugyldig verdi! Prøv på nytt")
 
