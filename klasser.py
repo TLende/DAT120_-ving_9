@@ -21,7 +21,7 @@ class avtale:
     def kategorierString(self):
         result = ""
         for kategori in self.kategorier:
-            result = result + f" navn: {kategori.Tittel} id: {kategori.ID}"
+            result += f" navn: {kategori.Tittel} id: {kategori.ID}"
         return result
 
     def legg_til_kategori(self, kategori):
@@ -55,3 +55,4 @@ class Sted:
         return f"ID: {self.id}, Navn: {self.Tittel}, Gateadresse: {self.gateadresse}, Postnr: {self.postnr}, Poststed: {self.poststed}"
 
 class brekreft(Exception): pass
+class kategorierror(Exception): pass

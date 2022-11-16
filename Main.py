@@ -16,7 +16,6 @@ kuk= "ok"
 if __name__ == "__main__":
     while True:
         list1 = ["Avtale","Sted","Kategori"]
-        list2 = [liste_avtaler,liste_steder,liste_kategorier]
         menyl = [
             "   [1]Avtaler",
             "   [2]Sted",
@@ -31,7 +30,7 @@ if __name__ == "__main__":
             try:
                 if tempi == 4:
                     quit
-                meny.menycommon(list1[tempi-1],list2[tempi-1],liste_steder)
+                meny.menycommon(list1[tempi-1],liste_avtaler,liste_steder,liste_kategorier)
 
                 break
             except ValueError:

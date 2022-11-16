@@ -2,9 +2,11 @@ import Funksjoner
 import Oving_10
 import klasser
 
-def menycommon(type,list,list_sted):
+def menycommon(type,list_avtale,list_sted,list_kategori):
     loop = True
     while loop == True:
+        list = [list_avtale,list_sted,list_kategori]
+        list1 = ["Avtaler", "Sted", "Kategori"]
         menyc = [
             f"Skriv inn ny {type}",
             f"Les {type} fra fil",
@@ -12,6 +14,7 @@ def menycommon(type,list,list_sted):
             f"Skriv ut alle {type}",
             f"Slett {type}",
             f"Rediger {type}",
+            f"Legg til kategori til avtale"
         ]
         menya = [
             Funksjoner.ny_avtale,
@@ -20,6 +23,7 @@ def menycommon(type,list,list_sted):
             Funksjoner.utskrift_klasser,
             Funksjoner.slett_fra_lite,
             Funksjoner.rediger_avtale,
+            Funksjoner.legg_til_kategori
         ]
         menys = [
             Oving_10.nyttsted,
@@ -54,7 +58,7 @@ def menycommon(type,list,list_sted):
                 meny[tmeny][valg](list)
                 break
             except TypeError:
-                meny[tmeny][valg](list,list_sted)
+                meny[tmeny][valg](list,list_sted,)
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igen")
