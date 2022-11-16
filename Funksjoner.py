@@ -213,14 +213,15 @@ def sted_sok(list,list_sted = list(),liste_test = False):
         raise klasser.Stederror
     if len(list_sted) != 0:
         utskrift_klasser(list_sted)
-        try:
-            imp = int(input(f"Velg Sted 1-{len(list_sted)}: "))-1
-            for x in list:
-                print(list[x].Sted, list_sted[imp])
-                if list[x].Sted == list_sted[imp]:
-                    print(list[x])
-        except:
-            print("Ikke gyldig input")
+        #try:
+        imp = int(input(f"Velg Sted 1-{len(list_sted)}: "))-1
+        for x in list:
+            utskrift_klasser(list)
+            print(f"{list[x].Sted} {list_sted[imp]}")
+            if list[x].Sted == list_sted[imp]:
+                print(list[x])
+        #except:
+            #print("Ikke gyldig input")
     else:
         raise klasser.Stederror
 
