@@ -33,14 +33,14 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
         menys = [
             Oving_10.nyttsted,
             Oving_10.lese_fil_sted,
-            "placeholder fo lese fil",
+            Funksjoner.lage_stedliste,
             Funksjoner.utskrift_klasser,
             Funksjoner.slett_fra_lite,
         ]
         menyk = [
             Oving_10.ny_kategori,
             Oving_10.lese_fil_sted,
-            "placeholder fo lese fil",
+            Funksjoner.lage_fil_kategori,
             Funksjoner.utskrift_klasser,
             Funksjoner.slett_fra_lite,
         ]
@@ -59,21 +59,20 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
             try:
                 if valg == len(meny[tmeny]):
                     loop = False
-                    break
                 else:
                     meny[tmeny][valg](list[tlist])
-                    break
+                break
             except klasser.Stederror:
                 try:
                     meny[tmeny][valg](list[tlist],list_sted,True)
                 except klasser.Stederror:
                     print("Lista er tom")
+                break
             except klasser.kategorierror:
                 try:
                     meny[tmeny][valg](list[tlist],list_kategori)
                 except klasser.kategorierror:
                     print("Lista er tom")
-
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igen")
