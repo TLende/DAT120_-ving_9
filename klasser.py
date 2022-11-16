@@ -55,4 +55,5 @@ class Sted:
         return f"ID: {self.id}, Navn: {self.Tittel}, Gateadresse: {self.gateadresse}, Postnr: {self.postnr}, Poststed: {self.poststed}"
 
 class brekreft(Exception): pass
+
 class kategorierror(Exception): pass
