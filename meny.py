@@ -26,7 +26,7 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
             Funksjoner.utskrift_klasser,
             Funksjoner.slett_fra_lite,
             Funksjoner.rediger_avtale,
-            Funksjoner.legg_til_kategori
+            Funksjoner.legg_til_kategorier
         ]
         menys = [
             Oving_10.nyttsted,
@@ -64,15 +64,16 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
                 else:
                     meny[tmeny][valg](list[tlist])
                     break
-            except TypeError:
+            except klasser.Stederror:
                 try:
-                    meny[tmeny][valg](list[tlist],list_sted)
+                    meny[tmeny][valg](list[tlist],list_sted,True)
+                except klasser.Stederror:
+                    print("Lista er tom")
+            except klasser.kategorierror:
+                try:
+                    meny[tmeny][valg](list[tlist],list_kategori)
                 except klasser.kategorierror:
-                    try:
-                        print("her")
-                        meny[tmeny][valg](list[tlist],list_kategori)
-                    except klasser.kategorierror:
-                        print("Lista er tom")
+                    print("Lista er tom")
 
                 break
             except ValueError:

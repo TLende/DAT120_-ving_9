@@ -52,3 +52,5 @@ class Sted:
 class brekreft(Exception): pass
 
 class kategorierror(Exception): pass
+
+class Stederror(Exception): pass

@@ -8,6 +8,9 @@ date = datetime.now()
 liste_avtaler = []
 liste_kategorier = []
 liste_steder = []
+liste_avtaler.append(klasser.avtale("Test","Her",datetime.now(),1400))
+liste_kategorier.append(klasser.Kategori(1,"Test",1))
+liste_steder.append(klasser.Sted(1,"Test",0,0,"Test"))
 kuk= "ok"
 1
 #liste.append(klasser.avtale("Skule","uis",datetime.now(),20))
@@ -38,3 +41,4 @@ if __name__ == "__main__":
                 break
             except ValueError:
                 print("Ikke gyldig verdi prøv igjen")
+

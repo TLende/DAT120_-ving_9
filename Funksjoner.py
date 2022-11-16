@@ -187,25 +187,23 @@ def Rbekreft(list,x):
 def rediger_avtale_element(x, list):
     list[x] = Funksjoner.ny_avtale(list)
 
-def legg_til_kategori(list,list_kategori):
+def legg_til_kategorier(list,list_kategori):
     utskrift_klasser(list)
     if len(list) != 0:
         if len(list_kategori) != 0:
             print(type(list_kategori[0]))
-            if type(list_kategori[0]) != "kategori":
-                print("tom")
+            if type(list_kategori[0]) != klasser.Kategori:
                 raise klasser.kategorierror
             try:
-                x = int(input(f"Velg ønsket avtale 1-{len(list)}"))
-                if 1 <= x >= len(list):
-                    try:
+                x = int(input(f"Velg ønsket avtale 1-{len(list)}: "))-1
+                if 0 <= x > len(list):
                         utskrift_klasser(list_kategori)
-                        list[x].legg_til_kategori(list_kategori[print(f"Velg kategori 1-{len(list_kategori)}")])
-                    except:
-                        print("Ikke gyldig input prøv igjen")
+                        inputet = int(input(f"Velg kategori 1-{len(list_kategori)}"))
+                        print(f"Input:{inputet-1} og {range(len(list_kategori))}")
+                        list[x].legg_til_kategori(list_kategori[inputet-1])
                 else:
                     raise ValueError
-            except:
+            except klasser.brekreft:
                 print("Ikke gyldig input prøv igjen")
         else:
             print("ok")
