@@ -215,10 +215,11 @@ def sted_sok(list,list_sted = list(),liste_test = False):
         utskrift_klasser(list_sted)
         #try:
         imp = int(input(f"Velg Sted 1-{len(list_sted)}: "))-1
-        for x in list:
-            utskrift_klasser(list)
-            print(f"{list[x].Sted} {list_sted[imp]}")
-            if list[x].Sted == list_sted[imp]:
+        temp = list_sted[imp].Tittel
+        print(f"Her er alle avtalene med stedet {temp}:")
+        for x in range(len(list)):
+            #utskrift_klasser(list)
+            if list[x].Sted.Tittel == temp:
                 print(list[x])
         #except:
             #print("Ikke gyldig input")
