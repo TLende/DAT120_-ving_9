@@ -6,14 +6,11 @@ import klasser
 
 class avtale:
     def __init__(self, tittel ="", sted = "",starttidspunkt = datetime.now(), varighet=0):
-        try:
-            self.Tittel = str(tittel)
-            self.Sted = sted
-            self.Starttidspunkt = starttidspunkt
-            self.Varighet = int(varighet)
-            self.kategorier = []
-        except ValueError:
-            print("Ikke gyldig data, prøv igjen")
+        self.Tittel = str(tittel)
+        self.Sted = sted
+        self.Starttidspunkt = starttidspunkt
+        self.Varighet = int(varighet)
+        self.kategorier = []
 
     def __str__(self):
         return f"Avtale:{self.Tittel}, Sted:{self.Sted}, Tid:{self.Starttidspunkt}, og varer:{self.Varighet} min. Avtalen har kategoriene: {self.kategorierString()}"
