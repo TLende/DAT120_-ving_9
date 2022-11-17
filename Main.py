@@ -18,7 +18,8 @@ liste_steder.append(klasser.Sted(1,"Test",0,0,"Test"))
 #liste.append(klasser.avtale("Test","Test2",datetime.now(),30))
 
 if __name__ == "__main__":
-    while True:
+    main = True
+    while main:
         list1 = ["Avtale","Sted","Kategori"]
         menyl = [
             "   [1]Avtaler",
@@ -33,7 +34,8 @@ if __name__ == "__main__":
             tempi = int(input(f"Skriv inn valget her 1-{len(menyl)}: "))
             try:
                 if tempi == 4:
-                    quit
+                    main = False
+                    break
                 meny.menycommon(list1[tempi-1],liste_avtaler,liste_steder,liste_kategorier)
 
                 break

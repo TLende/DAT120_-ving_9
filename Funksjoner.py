@@ -14,7 +14,7 @@ def ny_avtale(list, sted_liste = [],liste_test = False):
         print("Velg mellom disse:")
         for i in range(len(sted_liste)):
             print(F"{i+1}: {sted_liste[i]}")
-        Index = int(input(f"Velg sted 1-{len(sted_liste)}: "))
+        Index = int(input(f"Velg sted 1-{len(sted_liste)}: "))-1
         temp_sted = sted_liste[Index]
     else:
         print("Legg til sted manuelt")
