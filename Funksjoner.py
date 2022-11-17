@@ -13,8 +13,8 @@ def ny_avtale(list, sted_liste = [],liste_test = False):
     if x == "y" and len(sted_liste) != 0:
         print("Velg mellom disse:")
         for i in range(len(sted_liste)):
-            print(F"{i}: {sted_liste[i]}")
-        Index = int(input("Velg sted:"))
+            print(F"{i+1}: {sted_liste[i]}")
+        Index = int(input(f"Velg sted 1-{len(sted_liste)}: "))
         temp_sted = sted_liste[Index]
     else:
         print("Legg til sted manuelt")

@@ -74,7 +74,7 @@ def menycommon(type,list_avtale,list_sted,list_kategori):
                 except klasser.kategorierror:
                     print("Lista er tom")
                 break
-            except ValueError:
+            except:
                 print("Ikke gyldig verdi prøv igen")
 
 if __name__ == "__main__":

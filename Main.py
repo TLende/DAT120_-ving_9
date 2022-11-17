@@ -8,9 +8,9 @@ date = datetime.now()
 liste_avtaler = []
 liste_kategorier = []
 liste_steder = []
-#liste_avtaler.append(klasser.avtale("Test",klasser.Sted(1,"Test",0,0,"Test"),datetime.now(),1400))
-#liste_kategorier.append(klasser.Kategori(1,"Test",1))
-#liste_steder.append(klasser.Sted(1,"Test",0,0,"Test"))
+liste_avtaler.append(klasser.avtale("Test",klasser.Sted(1,"Test",0,0,"Test"),datetime.now(),1400))
+liste_kategorier.append(klasser.Kategori(1,"Test",1))
+liste_steder.append(klasser.Sted(1,"Test",0,0,"Test"))
 
 #print(liste_avtaler[0].Sted)
 #print(liste_steder[0])
@@ -37,5 +37,6 @@ if __name__ == "__main__":
                 meny.menycommon(list1[tempi-1],liste_avtaler,liste_steder,liste_kategorier)
 
                 break
-            except ValueError:
+            except:
                 print("Ikke gyldig verdi prøv igjen")
+                break
